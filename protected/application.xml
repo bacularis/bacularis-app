@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<application id="baculum" mode="Debug">
+	<paths>
+		<using namespace="System.I18N.*" />
+		<using namespace="Application.Common.Portlets.BButton" />
+		<using namespace="Application.Common.Portlets.BActiveButton" />
+		<using namespace="Application.Common.Class.BClientScript" />
+		<using namespace="Application.Common.Class.BStyleSheet" />
+	</paths>
+	<modules>
+		<!-- generic common modules -->
+		<module id="asset" class="Application.Common.Class.BAssetManager" />
+		<module id="logging" class="Application.Common.Class.Logging" />
+		<module id="misc" class="Application.Common.Class.Miscellaneous" />
+		<module id="config_ini" class="Application.Common.Class.ConfigIni" />
+		<module id="config_bacula" class="Application.Common.Class.ConfigBacula" />
+		<!-- authentication and authorization modules -->
+		<module id="auth_basic" class="Application.Common.Class.AuthBasic" />
+		<module id="auth_oauth2" class="Application.Common.Class.AuthOAuth2" />
+		<module id="ldap" class="Application.Common.Class.Ldap" />
+		<!-- cryptographic modules -->
+		<module id="crypto" class="Application.Common.Class.Crypto" />
+		<module id="apr1md5" class="Application.Common.Class.Apr1Md5" />
+		<module id="bcrypt" class="Application.Common.Class.BCrypt" />
+		<module id="sha1" class="Application.Common.Class.Sha1" />
+		<module id="ssha1" class="Application.Common.Class.Ssha1" />
+		<module id="sha256" class="Application.Common.Class.Sha256" />
+		<module id="sha512" class="Application.Common.Class.Sha512" />
+		<!-- communication modules -->
+		<module id="request" class="THttpRequest" UrlManager="url_manager" UrlFormat="HiddenPath" />
+		<module id="url_manager" class="Application.Common.Class.BaculumUrlMapping" EnableCustomUrl="true" />
+	</modules>
+	<services>
+		<service id="page" class="TPageService" BasePath="Application.Common.Pages" DefaultPage="CommonPage" />
+		<service id="oauth" class="TPageService" BasePath="Application.API.Pages.OAuth2" DefaultPage="Authorize" />
+		<service id="api" class="TPageService" BasePath="Application.API.Pages.API" DefaultPage="Welcome" />
+		<service id="panel" class="TPageService" BasePath="Application.API.Pages.Panel" DefaultPage="APIHome" />
+		<service id="web" class="TPageService" BasePath="Application.Web.Pages" DefaultPage="Dashboard" />
+	</services>
+</application>
