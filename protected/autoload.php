@@ -1,5 +1,12 @@
 <?php
 /*
+ * Bacularis - Bacula web interface
+ *
+ * Copyright (C) 2021 Marcin Haba
+ *
+ * The main author of Bacularis is Marcin Haba, with contributors, whose
+ * full list can be found in the AUTHORS file.
+ *
  * Bacula(R) - The Network Backup Solution
  * Baculum   - Bacula web interface
  *
@@ -36,7 +43,8 @@
 
 $namespaces = [
 	'Prado\\' => APPLICATION_DIRECTORY . '/protected/vendor/pradosoft/prado/framework',
-	'JSMin\\' => APPLICATION_DIRECTORY . '/protected/vendor/mrclay/jsmin-php/src/JSMin'
+	'JSMin\\' => APPLICATION_DIRECTORY . '/protected/vendor/mrclay/jsmin-php/src/JSMin',
+	'Bacularis\\' => APPLICATION_DIRECTORY . '/protected'
 ];
 
 class BaculumAutoloader {

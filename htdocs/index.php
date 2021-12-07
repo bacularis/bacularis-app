@@ -1,5 +1,12 @@
 <?php
 /*
+ * Bacularis - Bacula web interface
+ *
+ * Copyright (C) 2021 Marcin Haba
+ *
+ * The main author of Bacularis is Marcin Haba, with contributors, whose
+ * full list can be found in the AUTHORS file.
+ *
  * Bacula(R) - The Network Backup Solution
  * Baculum   - Bacula web interface
  *
@@ -24,10 +31,12 @@
  * Constant is used to localize always valid document root directory
  * Using for placing Baculum files in document root subdirectory
  */
-define('APPLICATION_DIRECTORY', __DIR__);
-define('PRADO_VENDORDIR', APPLICATION_DIRECTORY . '/protected/vendor');
+define('APPLICATION_DIRECTORY', dirname(__DIR__));
+define('APPLICATION_WEBROOT', APPLICATION_DIRECTORY . '/htdocs');
+define('APPLICATION_PROTECTED', APPLICATION_DIRECTORY . '/protected');
+define('PRADO_VENDORDIR', APPLICATION_PROTECTED . '/vendor');
 
-require 'protected/autoload.php';
-$application = new \Prado\TApplication;
+require(APPLICATION_PROTECTED . '/autoload.php');
+$application = new \Prado\TApplication(APPLICATION_PROTECTED);
 $application->run();
 ?>

@@ -1,0 +1,92 @@
+{
+	"name": "bacularis/bacularis-app",
+	"type": "project",
+	"description": "Bacularis - The Bacula web interface",
+	"keywords": ["bacula", "backup", "restore", "bacularis", "bacularis-app"],
+	"homepage": "https://bacularis.app",
+	"license": "AGPL-3.0-only",
+	"authors": [
+		{
+			"name": "Marcin Haba",
+			"email": "marcin.haba@bacula.pl",
+			"homepage": "https://bacula.pl",
+			"role": "Developer"
+		},
+		{
+			"name": "Wanderlei Hüttel",
+			"email": "wanderlei.huttel@gmail.com",
+			"homepage": "https://www.huttel.com.br",
+			"role": "Translator"
+		},
+		{
+			"name": "Sergey Zhidkov",
+			"email": "zhsv@bk.ru",
+			"role": "Translator"
+		},
+		{
+			"name": "Ken Sawada",
+			"email": "ksawa0126@gmail.com",
+			"role": "Translator"
+		}
+	],
+	"repositories": [
+		{
+			"type": "composer",
+			"url": "https://asset-packagist.org"
+		}
+	],
+	"require": {
+		"php": ">=7.1.0",
+		"ext-bcmath": "*",
+		"ext-curl": "*",
+		"ext-dom": "*",
+		"ext-json": "*",
+		"ext-ldap": "*",
+		"ext-mysqlnd": "*",
+		"ext-pdo": "*",
+		"ext-pgsql": "*",
+		"bower-asset/datatables.net": "*",
+		"bower-asset/datatables.net-buttons": "*",
+		"bower-asset/datatables.net-buttons-dt": "*",
+		"bower-asset/datatables.net-dt": "*",
+		"bower-asset/datatables.net-responsive": "*",
+		"bower-asset/datatables.net-responsive-dt": "*",
+		"bower-asset/datatables.net-select": "*",
+		"bower-asset/flotr2": "dev-master",
+		"bower-asset/fontawesome": "*",
+		"bower-asset/gaugejs": "*",
+		"bower-asset/jquery": "*",
+		"bower-asset/jquery-ui": "*",
+		"bower-asset/opentip": "*",
+		"pradosoft/prado": "~4.1",
+		"cweagans/composer-patches": "*",
+		"bacularis/bacularis-common": "*",
+		"bacularis/bacularis-api": "*",
+		"bacularis/bacularis-web": "*"
+	},
+	"scripts": {
+		"post-create-project-cmd": [
+			"cp protected/samples/baculum.users.sample protected/vendor/bacularis/bacularis-api/API/Config/baculum.users",
+			"cp protected/samples/baculum.users.sample protected/vendor/bacularis/bacularis-web/Web/Config/baculum.users",
+			"chmod 666 protected/vendor/bacularis/bacularis-api/API/Config/baculum.users protected/vendor/bacularis/bacularis-web/Web/Config/baculum.users",
+			"chmod 777 protected/vendor/bacularis/bacularis-api/API/{Logs,Config} protected/vendor/bacularis/bacularis-web/Web/{Logs,Config}",
+			"chmod 777 protected/runtime htdocs/assets",
+			"ln -s vendor/bacularis/bacularis-common/Common protected/Common",
+			"ln -s vendor/bacularis/bacularis-api/API protected/API",
+			"ln -s vendor/bacularis/bacularis-web/Web protected/Web",
+			"cp protected/vendor/bower-asset/fontawesome/css/all.min.css htdocs/themes/Baculum-v2/fonts/css/fontawesome-all.min.css",
+			"cp -r protected/vendor/bower-asset/fontawesome/webfonts/* htdocs/themes/Baculum-v2/fonts/webfonts/"
+		]
+	},
+	"extra": {
+		"patches": {
+			"pradosoft/prado": {
+				"Adapt framework to work with lower/upper case table names": "protected/patches/prado-framework-fix-for-bacula-pgsql-tables.patch"
+			}
+		}
+	},
+	"config": {
+		"vendor-dir": "protected/vendor",
+		"secure-http": false
+	}
+}

@@ -1,4 +1,4 @@
-Baculum is licensed under the GNU Affero General Public License, version
+Bacularis is licensed under the GNU Affero General Public License, version
 3.0 as published by the Free Software Foundation, Inc. ("AGPLv3").
 
 Additional Terms on the work licensed herein, pursuant to Section 7 of Affero
@@ -715,19 +715,19 @@ For more information on this, and how to apply and follow the GNU AGPL, see
 
 #####################################################################
 
-Baculum uses PRADO framework for working.
+Bacularis uses PRADO framework for working.
 
 Directory: protected/vendor/pradosoft/prado
 
 In the framework there have been applied patches from the following
 directory:
 
-Directory: debian/patches
+Directory: protected/patches
 
 The PRADO framework and the included demos are free software.
 They are released under the terms of the following BSD License.
 
-Copyright 2004-2014, The PRADO Group (http://www.pradosoft.com)
+Copyright 2004-2019, The PRADO Group (https://github.com/pradosoft)
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
@@ -740,9 +740,9 @@ this list of conditions and the following disclaimer.
 this list of conditions and the following disclaimer in the documentation
 and/or other materials provided with the distribution.
 
-- Neither the name of the PRADO Group nor the names of its contributors
-may be used to endorse or promote products derived from this software
-without specific prior written permission.
+- Neither the name of the of the copyright holder nor the names of its
+contributors may be used to endorse or promote products derived from this
+software without specific prior written permission.
 
 
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
@@ -758,7 +758,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #####################################################################
 
-Baculum uses Opentip JavaScript framework.
+Bacularis uses Opentip JavaScript framework.
 
 Directory: protected/vendor/bower-asset/opentip
 
@@ -788,7 +788,7 @@ THE SOFTWARE.
 
 #####################################################################
 
-Baculum uses Flotr2 JavaScript library for graphs and charts.
+Bacularis uses Flotr2 JavaScript library for graphs and charts.
 
 Directory: protected/vendor/bower-asset/flotr2
 
@@ -815,7 +815,7 @@ THE SOFTWARE.
 
 #####################################################################
 
-Baculum uses DataTables library for tables.
+Bacularis uses DataTables library for tables.
 
 Directories:
   protected/vendor/bower-asset/datatables.net
@@ -850,26 +850,26 @@ THE SOFTWARE.
 
 #####################################################################
 
-Baculum uses Font Awesome Free for icons.
+Bacularis uses Font Awesome Free for icons.
 
 Directory: protected/vendor/bower-asset/fontawesome
 Files:
-  themes/Baculum-v2/fonts/css/fontawesome-all.min.css
-  themes/Baculum-v2/fonts/webfonts/fa-brands-400.eot
-  themes/Baculum-v2/fonts/webfonts/fa-brands-400.svg
-  themes/Baculum-v2/fonts/webfonts/fa-brands-400.ttf
-  themes/Baculum-v2/fonts/webfonts/fa-brands-400.woff
-  themes/Baculum-v2/fonts/webfonts/fa-brands-400.woff2
-  themes/Baculum-v2/fonts/webfonts/fa-regular-400.eot
-  themes/Baculum-v2/fonts/webfonts/fa-regular-400.svg
-  themes/Baculum-v2/fonts/webfonts/fa-regular-400.ttf
-  themes/Baculum-v2/fonts/webfonts/fa-regular-400.woff
-  themes/Baculum-v2/fonts/webfonts/fa-regular-400.woff2
-  themes/Baculum-v2/fonts/webfonts/fa-solid-900.eot
-  themes/Baculum-v2/fonts/webfonts/fa-solid-900.svg
-  themes/Baculum-v2/fonts/webfonts/fa-solid-900.ttf
-  themes/Baculum-v2/fonts/webfonts/fa-solid-900.woff
-  themes/Baculum-v2/fonts/webfonts/fa-solid-900.woff2
+  htdocs/themes/Baculum-v2/fonts/css/fontawesome-all.min.css
+  htdocs/themes/Baculum-v2/fonts/webfonts/fa-brands-400.eot
+  htdocs/themes/Baculum-v2/fonts/webfonts/fa-brands-400.svg
+  htdocs/themes/Baculum-v2/fonts/webfonts/fa-brands-400.ttf
+  htdocs/themes/Baculum-v2/fonts/webfonts/fa-brands-400.woff
+  htdocs/themes/Baculum-v2/fonts/webfonts/fa-brands-400.woff2
+  htdocs/themes/Baculum-v2/fonts/webfonts/fa-regular-400.eot
+  htdocs/themes/Baculum-v2/fonts/webfonts/fa-regular-400.svg
+  htdocs/themes/Baculum-v2/fonts/webfonts/fa-regular-400.ttf
+  htdocs/themes/Baculum-v2/fonts/webfonts/fa-regular-400.woff
+  htdocs/themes/Baculum-v2/fonts/webfonts/fa-regular-400.woff2
+  htdocs/themes/Baculum-v2/fonts/webfonts/fa-solid-900.eot
+  htdocs/themes/Baculum-v2/fonts/webfonts/fa-solid-900.svg
+  htdocs/themes/Baculum-v2/fonts/webfonts/fa-solid-900.ttf
+  htdocs/themes/Baculum-v2/fonts/webfonts/fa-solid-900.woff
+  htdocs/themes/Baculum-v2/fonts/webfonts/fa-solid-900.woff2
 
 Full sources: https://github.com/FortAwesome/Font-Awesome
 
@@ -879,7 +879,7 @@ Icons: CC BY 4.0 License, Code: MIT License, Fonts: SIL OFL 1.1 License
 
 #####################################################################
 
-Baculum uses gauge.js library to display values in gauges.
+Bacularis uses gauge.js library to display values in gauges.
 
 Directory: protected/vendor/bower-asset/gaugejs
 
@@ -908,27 +908,27 @@ THE SOFTWARE.
 
 #####################################################################
 
-Baculum uses selected Noto Emoji icons to display the job weather status.
+Bacularis uses selected Noto Emoji icons to display the job weather status.
 
 Directory: protected/vendor/npm-asset/asturur-noto-emoji
 Files:
-  themes/Baculum-v2/weather_cloud_with_lighting_and_rain.png
-  themes/Baculum-v2/weather_cloud_with_rain.png
-  themes/Baculum-v2/weather_sun_behind_large_cloud.png
-  themes/Baculum-v2/weather_sun_behind_rain_cloud.png
-  themes/Baculum-v2/weather_sun_behind_small_cloud.png
-  themes/Baculum-v2/weather_sunny.png
+  htdocs/themes/Baculum-v2/weather_cloud_with_lighting_and_rain.png
+  htdocs/themes/Baculum-v2/weather_cloud_with_rain.png
+  htdocs/themes/Baculum-v2/weather_sun_behind_large_cloud.png
+  htdocs/themes/Baculum-v2/weather_sun_behind_rain_cloud.png
+  htdocs/themes/Baculum-v2/weather_sun_behind_small_cloud.png
+  htdocs/themes/Baculum-v2/weather_sunny.png
 
 Full sources: https://github.com/googlefonts/noto-emoji
 
 The following icon file has been modified:
 
 File:
-  themes/Baculum-v2/weather_sunny.png
+  htdocs/themes/Baculum-v2/weather_sunny.png
 Original source:
   protected/vendor/npm-asset/asturur-noto-emoji/svg/emoji_u1f31e.svg
 Modified source:
-  themes/Baculum-v2/svg/emoji_u1f31e_mod.svg
+  htdocs/themes/Baculum-v2/svg/emoji_u1f31e_mod.svg
 
 
 Copyright 2013 Google, Inc. All Rights Reserved.
@@ -947,7 +947,7 @@ limitations under the License.
 
 #####################################################################
 
-Baculum uses parts of the official Bacula documentation for describing
+Bacularis uses parts of the official Bacula documentation for describing
 the Bacula configuration directives.
 
 File: protected/Web/Data/dir_docs.html
