@@ -68,14 +68,12 @@
 		"post-create-project-cmd": [
 			"cp protected/samples/baculum.users.sample protected/vendor/bacularis/bacularis-api/API/Config/baculum.users",
 			"cp protected/samples/baculum.users.sample protected/vendor/bacularis/bacularis-web/Web/Config/baculum.users",
-			"chmod 666 protected/vendor/bacularis/bacularis-api/API/Config/baculum.users protected/vendor/bacularis/bacularis-web/Web/Config/baculum.users",
-			"chmod 777 protected/vendor/bacularis/bacularis-api/API/{Logs,Config} protected/vendor/bacularis/bacularis-web/Web/{Logs,Config}",
-			"chmod 777 protected/runtime htdocs/assets",
 			"ln -s vendor/bacularis/bacularis-common/Common protected/Common",
 			"ln -s vendor/bacularis/bacularis-api/API protected/API",
 			"ln -s vendor/bacularis/bacularis-web/Web protected/Web",
 			"cp protected/vendor/bower-asset/fontawesome/css/all.min.css htdocs/themes/Baculum-v2/fonts/css/fontawesome-all.min.css",
-			"cp -r protected/vendor/bower-asset/fontawesome/webfonts/* htdocs/themes/Baculum-v2/fonts/webfonts/"
+			"cp -r protected/vendor/bower-asset/fontawesome/webfonts/* htdocs/themes/Baculum-v2/fonts/webfonts/",
+			"echo 'PLEASE DON\'T FORGET TO RUN INSTALL SCRIPT: protected/tools/install.sh'"
 		]
 	},
 	"extra": {
