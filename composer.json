@@ -60,9 +60,9 @@
 		"bower-asset/opentip": "*",
 		"pradosoft/prado": "~4.1",
 		"cweagans/composer-patches": "*",
-		"bacularis/bacularis-common": "*",
-		"bacularis/bacularis-api": "*",
-		"bacularis/bacularis-web": "*"
+		"bacularis/bacularis-common": "dev-master",
+		"bacularis/bacularis-api": "dev-master",
+		"bacularis/bacularis-web": "dev-master"
 	},
 	"scripts": {
 		"post-create-project-cmd": [
