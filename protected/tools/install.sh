@@ -12,6 +12,8 @@ echo "+-----------------------------------------+"
 echo ""
 echo ""
 
+DEFAULT_WEB_USER='www-data'
+
 
 if [ $(id -u) != 0 ]
 then
@@ -27,8 +29,13 @@ echo "4 Other"
 echo "Please type number between 1-4:"
 read webserver
 
-echo "What is your web server user? [www-data]:"
+echo "What is your web server user? [$DEFAULT_WEB_USER]:"
 read webuser
+
+if [ -z "$webuser" ]
+then
+	webuser=$DEFAULT_WEB_USER
+fi
 
 TOOLDIR="`dirname $(readlink -f "$0")`"
 PROTDIR="`dirname ${TOOLDIR}`"
