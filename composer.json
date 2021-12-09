@@ -73,7 +73,7 @@
 			"ln -s vendor/bacularis/bacularis-web/Web protected/Web",
 			"cp protected/vendor/bower-asset/fontawesome/css/all.min.css htdocs/themes/Baculum-v2/fonts/css/fontawesome-all.min.css",
 			"cp -r protected/vendor/bower-asset/fontawesome/webfonts/* htdocs/themes/Baculum-v2/fonts/webfonts/",
-			"echo 'PLEASE DON\'T FORGET TO RUN INSTALL SCRIPT: protected/tools/install.sh'"
+			"echo 'PLEASE DON NOT FORGET TO RUN INSTALL SCRIPT: protected/tools/install.sh'"
 		]
 	},
 	"extra": {
