@@ -18,6 +18,7 @@ DEFAULT_WEB_USER='www-data'
 if [ $(id -u) != 0 ]
 then
 	echo "You are not root. Please run this script as the root user."
+	exit 1
 fi
 
 echo "What is your web server type?"
