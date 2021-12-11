@@ -1,0 +1,4 @@
+htdocs/assets/*
+protected/runtime/*
+htdocs/themes/Baculum-v2/fonts/css/*
+htdocs/themes/Baculum-v2/fonts/webfonts/*
