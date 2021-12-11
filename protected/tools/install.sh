@@ -51,8 +51,8 @@ chown -R $webuser \
 chmod 700 "${PROTDIR}/vendor/bacularis/bacularis-api/API/"{Logs,Config} \
 	"${PROTDIR}/vendor/bacularis/bacularis-web/Web/"{Logs,Config}
 
-chmod 600 "${PROTDIR}/vendor/bacularis/bacularis-api/API/Config/baculum.users" \
-	"${PROTDIR}/vendor/bacularis/bacularis-web/Web/Config/baculum.users"
+chmod 600 "${PROTDIR}/vendor/bacularis/bacularis-api/API/Config/bacularis.users" \
+	"${PROTDIR}/vendor/bacularis/bacularis-web/Web/Config/bacularis.users"
 
 server_file='';
 case $webserver in
