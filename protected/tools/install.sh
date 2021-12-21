@@ -1,14 +1,27 @@
 #!/bin/bash
 
+####
+# Bacularis - Bacula web interface
+#
+# Copyright (C) 2021 Marcin Haba
+#
+# The main author of Bacularis is Marcin Haba, with contributors, whose
+# full list can be found in the AUTHORS file.
+#
+# You may use this file and others of this release according to the
+# license defined in the LICENSE file, which includes the Affero General
+# Public License, v3.0 ("AGPLv3") and some additional permissions and
+# terms pursuant to its AGPLv3 Section 7.
+####
+
 echo ""
-echo "+=========================================+"
-echo "| Welcome in the Bacularis install script |"
-echo "+-----------------------------------------+"
-echo "| This script will help you to adjust     |"
-echo "| privileges for Bacularis files and      |"
-echo "| it will prepare configuration files for |"
-echo "| popular web servers.                    |"
-echo "+-----------------------------------------+"
+echo "+===================================================+"
+echo "|      Welcome in the Bacularis install script      |"
+echo "+---------------------------------------------------+"
+echo "|  This script will help you to adjust privileges   |"
+echo "|  for Bacularis files and it will prepare          |"
+echo "|  configuration files for popular web servers.     |"
+echo "+---------------------------------------------------+"
 echo ""
 echo ""
 
@@ -43,10 +56,10 @@ WEB_CFG_NGINX_SAMPLE="${PROTDIR}/samples/bacularis-nginx.conf"
 WEB_CFG_LIGHTTPD_SAMPLE="${PROTDIR}/samples/bacularis-lighttpd.conf"
 
 # Default values
-DEFAULT_WEB_SERVER=1 # Apache
+DEFAULT_WEB_SERVER_IDX=1 # Apache
 DEFAULT_WEB_USER='www-data'
 
-WEB_USER=''
+SILENT_MODE=0
 
 # Print message with given type
 # Params:
@@ -86,7 +99,7 @@ function check_user()
 	local ret=1
 	if [ $(id -u) != 0 ]
 	then
-		msg 2 "You are not root. Please run this script as the root user."
+		msg 2 "You are not root. Please run this script as the root user to be able to set permissions or use -n parameter."
 		ret=0
 	fi
 	return $ret
@@ -95,35 +108,72 @@ function check_user()
 # Get from stdin web server type (Apache, Nginx, Lighttpd...)
 function get_web_server()
 {
-	read webserver
+	local web_server_idx=-1
 
-	if [ -z "$webserver" ]
+	if [ $SILENT_MODE -eq 0 ]
 	then
-		webserver=$DEFAULT_WEB_SERVER
+		echo "" >&2
+		echo "What is your web server type?" >&2
+		local default=''
+		for ((i=0; i<${#WEB_SERVERS[@]}; i++))
+		do
+			if [ $i -eq $((DEFAULT_WEB_SERVER_IDX-1)) ]
+			then
+				default='(default)'
+			else
+				default=''
+			fi
+			echo "$((i+1)) ${WEB_SERVERS[$i]} $default" >&2
+		done
+		echo -n "Please type number between 1-${#WEB_SERVERS[@]} [$DEFAULT_WEB_SERVER_IDX]: " >&2
+		read web_server_idx
 	fi
-	echo $webserver
+	local web_server=`get_web_server_by_idx $web_server_idx`
+	echo $web_server
 }
 
-# Get from stdin web sever user
+function get_web_server_by_idx
+{
+	local web_server_idx="$1"
+	local web_server=''
+
+	case $web_server_idx in
+		1) web_server='apache'
+		;;
+		2) web_server='nginx'
+		;;
+		3) web_server='lighttpd'
+		;;
+		4) web_server=''
+		;;
+		*) web_server=`get_web_server_by_idx $DEFAULT_WEB_SERVER_IDX`
+	esac
+	echo $web_server;
+}
+
 function get_web_user()
 {
-	read webuser
+	local web_user=''
 
-	if [ -z "$webuser" ]
+	if [ $SILENT_MODE -eq 0 ]
 	then
-		webuser=$DEFAULT_WEB_USER
+		echo "" >&2
+		echo -n "What is your web server user? [$DEFAULT_WEB_USER]: " >&2
+		read web_user
 	fi
-	echo $webuser
+	if [ -z "$web_user" ]
+	then
+		web_user=$DEFAULT_WEB_USER
+	fi
+	echo $web_user
 }
 
 # Set directory permissions
 function set_dir_ownership()
 {
-	echo -n "What is your web server user? [$DEFAULT_WEB_USER]: "
-	local -r webuser=`get_web_user`
-	WEB_USER=$webuser
+	local web_user="$1"
 
-	chown -R $webuser ${PROT_DIRS[@]} ${PUB_DIRS[@]}
+	chown -R $web_user ${PROT_DIRS[@]} ${PUB_DIRS[@]}
 	if [ $? -ne 0 ]
 	then
 		msg 2 "Error while setting directory ownership"
@@ -151,57 +201,119 @@ function set_file_perms() {
 
 function prepare_web_server_cfg()
 {
-	echo ""
-	echo "What is your web server type?"
-	local default=''
-	for ((i=0; i<${#WEB_SERVERS[@]}; i++))
-	do
-		if [ $i -eq $((DEFAULT_WEB_SERVER-1)) ]
-		then
-			default='(default)'
-		else
-			default=''
-		fi
-		echo "$((i+1)) ${WEB_SERVERS[$i]} $default"
-	done
-	echo -n "Please type number between 1-${#WEB_SERVERS[@]} [$DEFAULT_WEB_SERVER]: "
-
-	local -r webserver=`get_web_server`
+	local web_server="$1"
+	local web_user="$2"
 
 	server_file='';
-	case $webserver in
-		1) server_file=$WEB_CFG_APACHE_SAMPLE
+	case $web_server in
+		apache) server_file=$WEB_CFG_APACHE_SAMPLE
 		;;
-		2) server_file=$WEB_CFG_NGINX_SAMPLE
+		nginx) server_file=$WEB_CFG_NGINX_SAMPLE
 		;;
-		3) server_file=$WEB_CFG_LIGHTTPD_SAMPLE
+		lighttpd) server_file=$WEB_CFG_LIGHTTPD_SAMPLE
 		;;
 	esac
 
 	if [ ! -z "$server_file" ]
 	then
-		msg 0 "Web server config file you can find in ${WEBDIR}/httpd.conf"
+		local ws_file=`basename $server_file`
+		msg 0 "Web server config file you can find in ${WEBDIR}/$ws_file"
 		msg 0 "Please move it to appropriate location."
-		cat "$server_file" | sed -e "s!###WEBUSER###!${WEB_USER}!g" -e "s!###WEBROOT###!${WEBDIR}/htdocs!g" > "${WEBDIR}/httpd.conf"
+		cat "$server_file" | sed \
+			-e "s!###WEBUSER###!${web_user}!g" \
+			-e "s!###WEBROOT###!${WEBDIR}/htdocs!g" \
+			> "${WEBDIR}/$ws_file"
 		if [ $? -ne 0 ]
 		then
-			msg 2 "Error while preparing web server config"
+			msg 2 "Error while preparing web server config ${WEBDIR}/$ws_file"
 		fi
 	else
 		msg 1 "No config sample for given web server"
 	fi
 }
 
-function main()
+function usage()
 {
-	check_user
-	set_dir_ownership
-	set_dir_perms
-	set_file_perms
-	prepare_web_server_cfg
+	echo "$0 [-u web_user] [-w web_server] [-n] [-s] [-h]:
+		-u WEB_USER		web server user
+		-w WEB_SERVER		web server type (apache, nginx or lighttpd)
+					parameter possible to use multiple times
+		-n			don't set directory ownership and permissions
+		-s			silent mode
+					don't ask about anything
+		-h, --help		display this message
+"
+	exit 0
 }
 
-main
+function main()
+{
+	local web_user=''
+	local web_servers=''
+	local no_perm=0
+
+	if [ "$1" == '--help' ]
+	then
+		usage
+	fi
+
+	while getopts "nsu:w:h" opt
+	do
+		case $opt in
+			u)
+				web_user=$OPTARG
+				;;
+			w)
+				web_servers="$web_servers $OPTARG"
+				;;
+			n)
+				no_perm=1
+				;;
+			s)
+				SILENT_MODE=1
+				;;
+			h|*)
+				usage
+				;;
+		esac
+	done
+
+	if [ $no_perm -eq 0 ]
+	then
+		check_user
+	fi
+
+	if [ -z "$web_servers" ]
+	then
+		web_servers=`get_web_server`
+		if [ -z "$web_servers" ]
+		then
+			msg 1 'Unknown web server. You need to prepare web server configuration self.'
+		fi
+	fi
+
+	if [ -z "$web_user" ]
+	then
+		web_user=`get_web_user`
+	fi
+
+	if [ $no_perm -eq 0 ]
+	then
+		if [ ! -z "$web_user" ]
+		then
+			set_dir_ownership $web_user
+		fi
+		set_dir_perms
+		set_file_perms
+	fi
+
+	for ws in $web_servers
+	do
+		prepare_web_server_cfg $ws $web_user
+	done
+}
+
+main $*
 
 msg 0 'End.'
 exit 0
