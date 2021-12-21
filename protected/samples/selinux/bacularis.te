@@ -1,0 +1,77 @@
+module bacularis 1.0.0;
+
+require {
+	type init_t;
+	type postgresql_port_t;
+	type mysqld_port_t;
+	type httpd_t;
+	type bacula_etc_t;
+	type unreserved_port_t;
+	type hplip_port_t;
+	type sudo_exec_t;
+	type httpd_cache_t;
+	type bacula_etc_t;
+	type bacula_exec_t;
+	type bacula_spool_t;
+	type httpd_sys_rw_content_t;
+	type scsi_generic_device_t;
+	type shadow_t;
+	type systemd_systemctl_exec_t;
+	type systemd_logind_sessions_t;
+	type systemd_logind_t;
+	type systemd_unit_file_t;
+	type admin_home_t;
+	type usr_t;
+	type postfix_etc_t;
+	type initrc_var_run_t;
+	type tape_device_t;
+	type ldap_port_t;
+	class tcp_socket { name_bind name_connect };
+	class dir { search read write create add_name remove_name getattr };
+	class file { append read write create getattr setattr open execute execute_no_trans ioctl unlink lock rename };
+	class chr_file { open read write ioctl };
+	class fifo_file { write };
+	class netlink_audit_socket { write nlmsg_relay create read };
+	class capability { audit_write sys_resource net_admin };
+	class service { start stop };
+	class unix_stream_socket { connectto };
+	class process { setrlimit };
+	class dbus { send_msg };
+}
+
+#============= httpd_t ==============
+
+allow httpd_t mysqld_port_t:tcp_socket name_connect;
+allow httpd_t postgresql_port_t:tcp_socket name_connect;
+allow httpd_t unreserved_port_t:tcp_socket { name_connect name_bind };
+allow httpd_t hplip_port_t:tcp_socket name_connect;
+allow httpd_t bacula_etc_t:dir { read write search };
+allow httpd_t bacula_etc_t:file { getattr read write open };
+allow httpd_t bacula_exec_t:file { getattr read execute execute_no_trans open };
+allow httpd_t bacula_spool_t:dir { write add_name remove_name };
+allow httpd_t bacula_spool_t:file { getattr create open read write ioctl unlink };
+allow httpd_t scsi_generic_device_t:chr_file { open read write ioctl };
+allow httpd_t sudo_exec_t:file { read execute open };
+allow httpd_t httpd_cache_t:dir { read create };
+allow httpd_t httpd_cache_t:file { read write create };
+allow httpd_t self:netlink_audit_socket { write nlmsg_relay create read };
+allow httpd_t self:capability { audit_write sys_resource net_admin };
+allow httpd_t self:process { setrlimit };
+allow httpd_t httpd_sys_rw_content_t:dir { read write };
+allow httpd_t httpd_sys_rw_content_t:file { create append };
+allow httpd_t shadow_t:file { open read getattr };
+allow httpd_t systemd_systemctl_exec_t:file { getattr open read execute execute_no_trans };
+allow httpd_t systemd_logind_sessions_t:fifo_file write;
+allow httpd_t systemd_logind_t:dbus send_msg;
+allow httpd_t systemd_unit_file_t:service { start stop };
+allow httpd_t init_t:unix_stream_socket connectto;
+allow httpd_t admin_home_t:dir { write add_name remove_name };
+allow httpd_t admin_home_t:file { getattr setattr create open read append write rename unlink };
+allow httpd_t usr_t:file write;
+allow httpd_t postfix_etc_t:file read;
+allow httpd_t initrc_var_run_t:file { open read lock };
+allow httpd_t tape_device_t:chr_file read;
+allow httpd_t ldap_port_t:tcp_socket { name_connect };
+
+#============= systemd_logind_t ==============
+allow systemd_logind_t httpd_t:dbus send_msg;
