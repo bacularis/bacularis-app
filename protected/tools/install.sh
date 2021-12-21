@@ -51,9 +51,9 @@ PROT_FILES=(
 	"${PROTDIR}/vendor/bacularis/bacularis-web/Web/Config/bacularis.users"
 )
 
-WEB_CFG_APACHE_SAMPLE="${PROTDIR}/samples/bacularis-apache.conf"
-WEB_CFG_NGINX_SAMPLE="${PROTDIR}/samples/bacularis-nginx.conf"
-WEB_CFG_LIGHTTPD_SAMPLE="${PROTDIR}/samples/bacularis-lighttpd.conf"
+WEB_CFG_APACHE_SAMPLE="${PROTDIR}/samples/webserver/bacularis-apache.conf"
+WEB_CFG_NGINX_SAMPLE="${PROTDIR}/samples/webserver/bacularis-nginx.conf"
+WEB_CFG_LIGHTTPD_SAMPLE="${PROTDIR}/samples/webserver/bacularis-lighttpd.conf"
 
 # Default values
 DEFAULT_WEB_SERVER_IDX=1 # Apache
