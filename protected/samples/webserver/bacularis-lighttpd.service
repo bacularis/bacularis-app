@@ -1,0 +1,11 @@
+[Unit]
+Description=Bacularis - Bacula web interface
+After=network.target
+
+[Service]
+PIDFile=/var/run/bacularis.pid
+ExecStart=/usr/sbin/lighttpd -f /etc/bacularis/bacularis-lighttpd.conf
+
+[Install]
+WantedBy=multi-user.target
+
