@@ -94,6 +94,7 @@ function msg()
 }
 
 # Check if script is running by superuser (root)
+# Returns: integer 1 if user is correct (superuser), otherwise 0.
 function check_user()
 {
 	local ret=1
@@ -132,6 +133,9 @@ function get_web_server()
 	echo $web_server
 }
 
+# Get web server type by type index
+# Params:
+#  integer $1 web server type index
 function get_web_server_by_idx
 {
 	local web_server_idx="$1"
@@ -151,6 +155,8 @@ function get_web_server_by_idx
 	echo $web_server;
 }
 
+# Get web server user.
+# Reads user from input or uses default user if silent mode is used.
 function get_web_user()
 {
 	local web_user=''
@@ -169,6 +175,8 @@ function get_web_user()
 }
 
 # Set directory permissions
+# Params:
+#  string $1 web server user
 function set_dir_ownership()
 {
 	local web_user="$1"
@@ -199,12 +207,18 @@ function set_file_perms() {
 	fi
 }
 
+# Prepare web server configuration file
+# Params:
+#  string $1 web server type (apache, nginx, lighttpd...)
+#  string $2 web root directory
+#  string $3 web server user
 function prepare_web_server_cfg()
 {
 	local web_server="$1"
-	local web_user="$2"
+	local web_root="$2"
+	local web_user="$3"
 
-	server_file='';
+	server_file=''
 	case $web_server in
 		apache) server_file=$WEB_CFG_APACHE_SAMPLE
 		;;
@@ -221,7 +235,7 @@ function prepare_web_server_cfg()
 		msg 0 "Please move it to appropriate location."
 		cat "$server_file" | sed \
 			-e "s!###WEBUSER###!${web_user}!g" \
-			-e "s!###WEBROOT###!${WEBDIR}/htdocs!g" \
+			-e "s!###WEBROOT###!${web_root}!g" \
 			> "${WEBDIR}/$ws_file"
 		if [ $? -ne 0 ]
 		then
@@ -238,6 +252,7 @@ function usage()
 		-u WEB_USER		web server user
 		-w WEB_SERVER		web server type (apache, nginx or lighttpd)
 					parameter possible to use multiple times
+		-d WEB_ROOT_DIR		web server document root directory (web root)
 		-n			don't set directory ownership and permissions
 		-s			silent mode
 					don't ask about anything
@@ -250,6 +265,7 @@ function main()
 {
 	local web_user=''
 	local web_servers=''
+	local web_root=''
 	local no_perm=0
 
 	if [ "$1" == '--help' ]
@@ -257,9 +273,12 @@ function main()
 		usage
 	fi
 
-	while getopts "nsu:w:h" opt
+	while getopts "d:nsu:w:h" opt
 	do
 		case $opt in
+			d)
+				web_root=$OPTARG
+				;;
 			u)
 				web_user=$OPTARG
 				;;
@@ -283,9 +302,14 @@ function main()
 		check_user
 	fi
 
+	if [ -z "$web_root" ]
+	then
+		web_root="${WEBDIR}/htdocs"
+	fi
+
 	if [ -z "$web_servers" ]
 	then
-		web_servers=`get_web_server`
+		web_servers="`get_web_server`"
 		if [ -z "$web_servers" ]
 		then
 			msg 1 'Unknown web server. You need to prepare web server configuration self.'
@@ -294,14 +318,14 @@ function main()
 
 	if [ -z "$web_user" ]
 	then
-		web_user=`get_web_user`
+		web_user="`get_web_user`"
 	fi
 
 	if [ $no_perm -eq 0 ]
 	then
 		if [ ! -z "$web_user" ]
 		then
-			set_dir_ownership $web_user
+			set_dir_ownership "$web_user"
 		fi
 		set_dir_perms
 		set_file_perms
@@ -309,11 +333,11 @@ function main()
 
 	for ws in $web_servers
 	do
-		prepare_web_server_cfg $ws $web_user
+		prepare_web_server_cfg "$ws" "$web_root" "$web_user"
 	done
 }
 
-main $*
+main "$@"
 
 msg 0 'End.'
 exit 0
