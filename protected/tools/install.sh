@@ -58,6 +58,7 @@ WEB_CFG_LIGHTTPD_SAMPLE="${PROTDIR}/samples/webserver/bacularis-lighttpd.conf"
 # Default values
 DEFAULT_WEB_SERVER_IDX=1 # Apache
 DEFAULT_WEB_USER='www-data'
+DEFAULT_PHP_SOCK='/run/php-fpm/www.sock'
 
 SILENT_MODE=0
 
@@ -212,11 +213,13 @@ function set_file_perms() {
 #  string $1 web server type (apache, nginx, lighttpd...)
 #  string $2 web root directory
 #  string $3 web server user
+#  string $4 PHP-FPM unix socket path
 function prepare_web_server_cfg()
 {
 	local web_server="$1"
 	local web_root="$2"
 	local web_user="$3"
+	local php_sock="$4"
 
 	server_file=''
 	case $web_server in
@@ -236,6 +239,7 @@ function prepare_web_server_cfg()
 		cat "$server_file" | sed \
 			-e "s!###WEBUSER###!${web_user}!g" \
 			-e "s!###WEBROOT###!${web_root}!g" \
+			-e "s!###PHPSOCK###!${php_sock}!g" \
 			> "${WEBDIR}/$ws_file"
 		if [ $? -ne 0 ]
 		then
@@ -254,6 +258,7 @@ function usage()
 					parameter possible to use multiple times
 		-d WEB_ROOT_DIR		web server document root directory (web root)
 		-n			don't set directory ownership and permissions
+		-p PHP_SOCK_PATH	PHP-FPM unix socket path
 		-s			silent mode
 					don't ask about anything
 		-h, --help		display this message
@@ -266,6 +271,7 @@ function main()
 	local web_user=''
 	local web_servers=''
 	local web_root=''
+	local php_sock="${DEFAULT_PHP_SOCK}"
 	local no_perm=0
 
 	if [ "$1" == '--help' ]
@@ -273,20 +279,23 @@ function main()
 		usage
 	fi
 
-	while getopts "d:nsu:w:h" opt
+	while getopts "d:np:su:w:h" opt
 	do
 		case $opt in
 			d)
-				web_root=$OPTARG
+				web_root="$OPTARG"
 				;;
 			u)
-				web_user=$OPTARG
+				web_user="$OPTARG"
 				;;
 			w)
 				web_servers="$web_servers $OPTARG"
 				;;
 			n)
 				no_perm=1
+				;;
+			p)
+				php_sock="$OPTARG"
 				;;
 			s)
 				SILENT_MODE=1
@@ -333,7 +342,7 @@ function main()
 
 	for ws in $web_servers
 	do
-		prepare_web_server_cfg "$ws" "$web_root" "$web_user"
+		prepare_web_server_cfg "$ws" "$web_root" "$web_user" "$php_sock"
 	done
 }
 
