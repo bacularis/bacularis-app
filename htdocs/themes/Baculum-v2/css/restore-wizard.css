@@ -15,6 +15,7 @@
 
 #restore-browser-files {
 	height: calc(100% - 57px) !important;
+	overflow-x: auto;
 }
 
 @media only screen and (max-width: 600px) {
@@ -37,7 +38,7 @@
 	background: rgba(182,182,182,0.4) url('/themes/Baculum-v2/loader-small.gif') no-repeat center center;
 }
 
-#restore-browser-files-content {
+#restore-browser-files-content, #restore-browser-files-content-flat {
 	position: relative;
 	height: 100%;
 }
@@ -52,10 +53,6 @@ div.file-browser-element {
 	clear: both;
 }
 
-div.file-browser-element:hover {
-	background-color: rgb(219, 222, 223);
-}
-
 .restore-browser-element-right {
 	float: right;
 	width: 137px;
@@ -63,6 +60,29 @@ div.file-browser-element:hover {
 
 .restore-browser-element-right {
 	line-height: 24px;
+}
+
+#restore-browser-files-content-tree ul {
+	padding-left: 14px;
+	list-style-type: none;
+	margin: 0;
+}
+
+#restore-browser-files-content-tree > ul {
+	padding: 0;
+}
+
+li.file-browser-element {
+	padding: 1px 0;
+	cursor: pointer;
+}
+
+li.file-browser-element > div {
+	padding: 1px 8px;
+}
+
+li.file-browser-element > div:hover, div.file-browser-element:hover {
+	background-color: rgb(219, 222, 223);
 }
 
 .file-browser-watermark {
