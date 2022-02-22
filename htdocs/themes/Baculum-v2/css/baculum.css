@@ -104,6 +104,15 @@ table.dataTable tfoot th, table.dataTable tfoot td {
 	padding: 10px 0 6px 0 !important;
 }
 
+
+table.dataTable.small_padding thead th, table.dataTable.small_padding thead td {
+	padding: 8px 1px;
+}
+
+table.dataTable.small_padding tbody th, table.dataTable.small_padding tbody td {
+	padding: 8px 1px;
+}
+
 /* Hide first default column in column visibility menu */
 div.dt-button-collection button[data-cv-idx="0"] {
 	display: none !important;
@@ -310,6 +319,10 @@ div.config_directives {
 
 .justify {
 	text-align: justify;
+}
+
+.pointer {
+	cursor: pointer;
 }
 
 .fileset_browser_file_container, .fileset_browser_include_container, .fileset_browser_exclude_container {
@@ -652,4 +665,11 @@ div.directive_help dt {
 
 div.directive_help dd {
 	margin-inline-start: 20px;
+}
+
+/* Reports */
+#job_history_report_table th:not(:nth-of-type(1)):not(:nth-of-type(2)) {
+	/* to have fixed day column width in job report */
+	max-width: 38px;
+	width: 38px;
 }
