@@ -12,6 +12,20 @@ The project consists of two web applications: the web interface and Bacula progr
 
 Bacularis is a friendly fork of Baculum. It has been founded by Baculum's creator to simplify Baculum features that they could be used not only by users with strong Bacula skills but also by beginners or intermediate users.
 
+## Requirements
+
+Before installing please make sure you have installed PHP >= 7.1 and the following PHP modules:
+
+ - php-bcmath
+ - php-curl
+ - php-dom
+ - php-json
+ - php-ldap
+ - php-mysqlnd
+ - php-pdo
+ - php-pgsql
+ - php-intl
+
 ## Installation
 
 The easiest way of installing and updating Bacularis is using Composer for that.
