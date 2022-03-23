@@ -17,13 +17,16 @@
 # Paths
 PROJDIR="`readlink -f $(dirname ${0})/../..`"
 
+# Vendor directory
+VENDIR="protected/vendor"
+
 # Backup file name
 BACKUP_FILE='bacularis-backup.tar'
 
 # Protected directories
 PROT_DIRS=(
-	"protected/vendor/bacularis/bacularis-api/API/"{Logs,Config}
-	"protected/vendor/bacularis/bacularis-web/Web/"{Logs,Config}
+	"${VENDIR}/bacularis/bacularis-api/API/"{Logs,Config}
+	"${VENDIR}/bacularis/bacularis-web/Web/"{Logs,Config}
 )
 
 # Do config and log files backup.
@@ -58,8 +61,8 @@ function restore_files() {
 			exit 1
 		fi
 	else
-		echo "ERROR: No backup to restore."
-		exit 1
+		echo "INFO: No backup to restore."
+		exit 0
 	fi
 }
 
@@ -86,6 +89,12 @@ function usage() {
 }
 
 cd "$PROJDIR"
+
+if [ ! -d "$VENDIR" ]
+then
+	# It is installation, no backup needed
+	exit 0
+fi
 
 if [ "$1" == "backup" ]
 then
