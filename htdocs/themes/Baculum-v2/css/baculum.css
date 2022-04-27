@@ -22,6 +22,10 @@ pre {
 	word-wrap: break-word;       /* Internet Explorer 5.5+ */
 }
 
+.bold {
+	font-weight: bold;
+}
+
 table.dataTable {
 	font-size: 14px;
 	line-height: 1.2;
