@@ -317,6 +317,14 @@ div.config_directives {
 	padding: 10px;
 }
 
+div.config_loader {
+	width: 100%;
+	min-height: 500px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
 #last_jobs_list tbody tr {
 	cursor: pointer;
 }
