@@ -28,7 +28,7 @@ Before installing please make sure you have installed PHP >= 7.1 and the followi
 
 ## Installation
 
-The easiest way of installing and updating Bacularis is using Composer for that.
+One of the ways to install and update Bacularis is using Composer for that.
 
 If you don't have Composer installed, you can use the following commands to install it:
 
