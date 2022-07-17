@@ -17,6 +17,7 @@
 		<module id="auth_basic" class="Bacularis\Common\Modules\AuthBasic" />
 		<module id="auth_oauth2" class="Bacularis\Common\Modules\AuthOAuth2" />
 		<module id="ldap" class="Bacularis\Common\Modules\Ldap" />
+		<module id="totp" class="Bacularis\Common\Modules\Totp" />
 		<!-- cryptographic modules -->
 		<module id="crypto" class="Bacularis\Common\Modules\Crypto" />
 		<module id="apr1md5" class="Bacularis\Common\Modules\Apr1Md5" />
@@ -28,6 +29,8 @@
 		<!-- communication modules -->
 		<module id="request" class="THttpRequest" UrlManager="url_manager" UrlFormat="HiddenPath" />
 		<module id="url_manager" class="Bacularis\Common\Modules\BaculumUrlMapping" EnableCustomUrl="true" />
+		<!-- other modules -->
+		<module id="base32" class="Bacularis\Common\Modules\Base32" />
 	</modules>
 	<services>
 		<service id="page" class="TPageService" BasePath="Bacularis.Common.Pages" DefaultPage="CommonPage" />
