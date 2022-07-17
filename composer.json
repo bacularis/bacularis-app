@@ -58,6 +58,7 @@
 		"bower-asset/jquery": "*",
 		"bower-asset/jquery-ui": "*",
 		"bower-asset/opentip": "*",
+		"npm-asset/qrcodejs": "*",
 		"pradosoft/prado": "~4.1.2",
 		"cweagans/composer-patches": "*",
 		"bacularis/bacularis-common": "*",
