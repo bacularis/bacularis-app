@@ -80,7 +80,7 @@
 		"pre-update-cmd": [
 				"[ ! -e 'protected/tools/update.sh' ] || protected/tools/update.sh backup"
 		],
-		"post-install-cmd": [
+		"pre-patch-apply": [
 				"\\cp -rf protected/vendor/bacularis/bacularis-common/project/patches ./protected/"
 		],
 		"post-update-cmd": [
