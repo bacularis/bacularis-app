@@ -81,7 +81,7 @@
 				"protected/tools/update.sh backup"
 		],
 		"post-update-cmd": [
-				"\cp -rf protected/vendor/bacularis/bacularis-common/project/* ./",
+				"\\cp -rf protected/vendor/bacularis/bacularis-common/project/* ./",
 				"protected/tools/update.sh restore"
 		]
 	},
