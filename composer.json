@@ -81,7 +81,7 @@
 				"[ ! -e 'protected/tools/update.sh' ] || protected/tools/update.sh backup"
 		],
 		"pre-patch-apply": [
-				"\\cp -rf protected/vendor/bacularis/bacularis-common/project/patches ./protected/"
+				"\\cp -rf protected/vendor/bacularis/bacularis-common/project/protected/patches ./protected/"
 		],
 		"post-update-cmd": [
 				"\\cp -rf protected/vendor/bacularis/bacularis-common/project/* ./",
