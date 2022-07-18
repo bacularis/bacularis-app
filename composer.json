@@ -67,6 +67,7 @@
 	},
 	"scripts": {
 		"post-create-project-cmd": [
+			"cp -rf protected/vendor/bacularis/bacularis-common/project/* ./",
 			"cp protected/samples/webserver/bacularis.users.sample protected/vendor/bacularis/bacularis-api/API/Config/bacularis.users",
 			"cp protected/samples/webserver/bacularis.users.sample protected/vendor/bacularis/bacularis-web/Web/Config/bacularis.users",
 			"ln -s vendor/bacularis/bacularis-common/Common protected/Common",
@@ -80,6 +81,7 @@
 				"protected/tools/update.sh backup"
 		],
 		"post-update-cmd": [
+				"\cp -rf protected/vendor/bacularis/bacularis-common/project/* ./",
 				"protected/tools/update.sh restore"
 		]
 	},
