@@ -790,7 +790,7 @@ THE SOFTWARE.
 
 Bacularis uses Flotr2 JavaScript library for graphs and charts.
 
-Directory: protected/vendor/bower-asset/flotr2
+Directory: protected/vendor/npm-asset/flotr2
 
 
 Copyright (c) 2012 Carl Sutherland
