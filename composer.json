@@ -55,22 +55,22 @@
 		"ext-mysqlnd": "*",
 		"ext-pdo": "*",
 		"ext-pgsql": "*",
-		"bower-asset/datatables.net": "*",
-		"bower-asset/datatables.net-buttons": "*",
-		"bower-asset/datatables.net-buttons-dt": "*",
-		"bower-asset/datatables.net-dt": "*",
-		"bower-asset/datatables.net-responsive": "*",
-		"bower-asset/datatables.net-responsive-dt": "*",
-		"bower-asset/datatables.net-select": "*",
-		"bower-asset/flotr2": "dev-master",
-		"bower-asset/fontawesome": "*",
-		"bower-asset/gaugejs": "*",
-		"bower-asset/jquery": "*",
-		"bower-asset/jquery-ui": "*",
-		"bower-asset/opentip": "*",
-		"npm-asset/qrcodejs": "*",
+		"bower-asset/datatables.net": "^1",
+		"bower-asset/datatables.net-buttons": "^2",
+		"bower-asset/datatables.net-buttons-dt": "^2",
+		"bower-asset/datatables.net-dt": "^1",
+		"bower-asset/datatables.net-responsive": "^2",
+		"bower-asset/datatables.net-responsive-dt": "^2",
+		"bower-asset/datatables.net-select": "^1",
+		"bower-asset/fontawesome": "^6",
+		"bower-asset/gaugejs": "^1",
+		"bower-asset/jquery": "^3",
+		"bower-asset/jquery-ui": "^1",
+		"bower-asset/opentip": "^2",
+		"npm-asset/flotr2": "^0",
+		"npm-asset/qrcodejs": "^0",
 		"pradosoft/prado": "4.2.2",
-		"cweagans/composer-patches": "*",
+		"cweagans/composer-patches": "^1",
 		"bacularis/bacularis-common": "*",
 		"bacularis/bacularis-api": "*",
 		"bacularis/bacularis-web": "*"
@@ -107,5 +107,10 @@
 	},
 	"config": {
 		"vendor-dir": "protected/vendor"
+	},
+	"support" : {
+		"issues" : "https://github.com/bacularis/bacularis-app/issues",
+		"source" : "https://github.com/bacularis",
+		"docs" : "https://bacularis.app/doc"
 	}
 }
