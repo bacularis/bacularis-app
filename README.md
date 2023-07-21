@@ -14,7 +14,7 @@ Bacularis is a friendly fork of Baculum. It has been founded by Baculum's creato
 
 ## Requirements
 
-Before installing please make sure you have installed PHP >= 7.1 and the following PHP modules:
+Before installing please make sure you have installed PHP >= 7.4 and the following PHP modules:
 
  - php-bcmath
  - php-curl
