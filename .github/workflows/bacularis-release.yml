@@ -1,0 +1,139 @@
+name: Bacularis release
+
+on: workflow_dispatch
+
+jobs:
+  Get-Bacularis-Version:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    outputs:
+      version: ${{ steps.version.outputs.version }}
+    steps:
+      - name: Checkout Bacularis-Common repository
+        uses: actions/checkout@v3
+        with:
+          repository: bacularis/bacularis-common
+          token: ${{ secrets.GH_RELEASE_PAT }}
+          path: common
+      - name: Get version
+        id: version
+        run: echo "version=$(php -r 'namespace Bacularis\Common\Modules; class CommonModule {}; include "Common/Modules/Params.php"; echo Params::BACULARIS_VERSION;')" >> "$GITHUB_OUTPUT"
+        working-directory: common
+
+  Do-Bacularis-Common-Release:
+    runs-on: ubuntu-latest
+    needs: Get-Bacularis-Version
+    env:
+      version: ${{ needs.Get-Bacularis-Version.outputs.version }}
+      project: Bacularis-Common
+      owner: bacularis
+      repository: bacularis-common
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout ${{ env.project }} repository
+        uses: actions/checkout@v3
+        with:
+          repository: ${{ env.owner }}/${{ env.repository }}
+          token: ${{ secrets.GH_RELEASE_PAT }}
+      - name: Do ${{ env.project }} release ${{ env.version }}
+        uses: ncipollo/release-action@v1
+        with:
+          bodyFile: RELEASE_NOTES.md
+          makeLatest: true
+          name: ${{ env.project }} ${{ env.version }}
+          owner: ${{ env.owner }}
+          repo: ${{ env.repository }}
+          skipIfReleaseExists: true
+          commit: master
+          tag: ${{ env.version }}
+          token: ${{ secrets.GH_RELEASE_PAT }}
+
+  Do-Bacularis-API-Release:
+    runs-on: ubuntu-latest
+    needs: Get-Bacularis-Version
+    env:
+      version: ${{ needs.Get-Bacularis-Version.outputs.version }}
+      project: Bacularis-API
+      owner: bacularis
+      repository: bacularis-api
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout ${{ env.project }} repository
+        uses: actions/checkout@v3
+        with:
+          repository: ${{ env.owner }}/${{ env.repository }}
+          token: ${{ secrets.GH_RELEASE_PAT }}
+      - name: Do ${{ env.project }} release ${{ env.version }}
+        uses: ncipollo/release-action@v1
+        with:
+          bodyFile: RELEASE_NOTES.md
+          makeLatest: true
+          name: ${{ env.project }} ${{ env.version }}
+          owner: ${{ env.owner }}
+          repo: ${{ env.repository }}
+          skipIfReleaseExists: true
+          commit: master
+          tag: ${{ env.version }}
+          token: ${{ secrets.GH_RELEASE_PAT }}
+
+  Do-Bacularis-Web-Release:
+    runs-on: ubuntu-latest
+    needs: Get-Bacularis-Version
+    env:
+      version: ${{ needs.Get-Bacularis-Version.outputs.version }}
+      project: Bacularis-Web
+      owner: bacularis
+      repository: bacularis-web
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout ${{ env.project }} repository
+        uses: actions/checkout@v3
+        with:
+          repository: ${{ env.owner }}/${{ env.repository }}
+          token: ${{ secrets.GH_RELEASE_PAT }}
+      - name: Do ${{ env.project }} release ${{ env.version }}
+        uses: ncipollo/release-action@v1
+        with:
+          bodyFile: RELEASE_NOTES.md
+          makeLatest: true
+          name: ${{ env.project }} ${{ env.version }}
+          owner: ${{ env.owner }}
+          repo: ${{ env.repository }}
+          skipIfReleaseExists: true
+          commit: master
+          tag: ${{ env.version }}
+          token: ${{ secrets.GH_RELEASE_PAT }}
+
+  Do-Bacularis-App-Release:
+    runs-on: ubuntu-latest
+    needs: Get-Bacularis-Version
+    env:
+      version: ${{ needs.Get-Bacularis-Version.outputs.version }}
+      project: Bacularis-App
+      owner: bacularis
+      repository: bacularis-app
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout ${{ env.project }} repository
+        uses: actions/checkout@v3
+        with:
+          repository: ${{ env.owner }}/${{ env.repository }}
+          token: ${{ secrets.GH_RELEASE_PAT }}
+      - name: Do ${{ env.project }} release ${{ env.version }}
+        uses: ncipollo/release-action@v1
+        with:
+          bodyFile: RELEASE_NOTES.md
+          makeLatest: true
+          name: ${{ env.project }} ${{ env.version }}
+          owner: ${{ env.owner }}
+          repo: ${{ env.repository }}
+          skipIfReleaseExists: true
+          commit: master
+          tag: ${{ env.version }}
+          token: ${{ secrets.GH_RELEASE_PAT }}
+
