@@ -1,6 +1,4 @@
 
-This is a minor bug fix release. The only change is fix for installation
-using Composer.
-
-Changes:
- - Fix tables library version
+This is a minor new function and bug fix release. Release notes for each particular
+Bacularis module have been prepared separately and they are available in the module
+repositories.
