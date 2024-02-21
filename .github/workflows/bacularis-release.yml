@@ -11,7 +11,7 @@ jobs:
       version: ${{ steps.version.outputs.version }}
     steps:
       - name: Checkout Bacularis-Common repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           repository: bacularis/bacularis-common
           token: ${{ secrets.GH_RELEASE_PAT }}
@@ -33,7 +33,7 @@ jobs:
       contents: write
     steps:
       - name: Checkout ${{ env.project }} repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           repository: ${{ env.owner }}/${{ env.repository }}
           token: ${{ secrets.GH_RELEASE_PAT }}
@@ -62,7 +62,7 @@ jobs:
       contents: write
     steps:
       - name: Checkout ${{ env.project }} repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           repository: ${{ env.owner }}/${{ env.repository }}
           token: ${{ secrets.GH_RELEASE_PAT }}
@@ -91,7 +91,7 @@ jobs:
       contents: write
     steps:
       - name: Checkout ${{ env.project }} repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           repository: ${{ env.owner }}/${{ env.repository }}
           token: ${{ secrets.GH_RELEASE_PAT }}
@@ -120,7 +120,7 @@ jobs:
       contents: write
     steps:
       - name: Checkout ${{ env.project }} repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           repository: ${{ env.owner }}/${{ env.repository }}
           token: ${{ secrets.GH_RELEASE_PAT }}
