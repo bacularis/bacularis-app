@@ -1,23 +1,19 @@
 
-This is minor new feature and bug fix release. We introduced a couple of
-improvements for using backup file list function like finding the largest
-or the newest files in backup. Besides that we added a new deployment
-OS profiles for Ubuntu 24.04 Noble and Fedora 40.
+This is a minor new feature and bug fix release. We added support for LDAP filters.
+
+From the fixes side, we disabled capability to log in with empty password for LDAP authentication method if LDAP server allows it.
+This has meaning for authentication with LDAP servers that have the unauthenticated authentication method enabled (like Windows Active Directory) and that allow logging in with empty password.
+
+At the end we updated the Polish language translations for API and Web.
 
 Bacularis Web
- - Add control to display top 10 largest/smallest/recent/oldest backup files
- - Add sorting capability by file, size and mtime columns in backup file list
- - Add deployment OS profile for Fedora 40
- - Add deployment OS profile for Ubuntu 24.04 Noble
- - Change default job age for job size and files graph
- - Fix validation for data view name
- - Fix network test support for Bacula 9.6
- - Fix displaying text in running jobs bar on Firefox
+ - Add LDAP filters support in LDAP authentication method
+ - Update Polish translations
 
 Bacularis API
- - Add order by and order type parameters to /jobs/{jobid}/files endpoint
+ - Update Polish translations
 
 Bacularis Common
- - Add commented software compression lines to web server configs
- - Add custom sorting method by given property
+ - Disable logging in with empty password for LDAP authentication method
+ - Add support for LDAP filters
 
