@@ -1,19 +1,23 @@
 
-This is a minor new feature and bug fix release. We added support for LDAP filters.
-
-From the fixes side, we disabled capability to log in with empty password for LDAP authentication method if LDAP server allows it.
-This has meaning for authentication with LDAP servers that have the unauthenticated authentication method enabled (like Windows Active Directory) and that allow logging in with empty password.
-
-At the end we updated the Polish language translations for API and Web.
+This is a major new function release. We added the job files difference
+function that enables comparing files in jobs and finding file
+differences between selected jobids or jobids range.
+Besides that we added a new features in configuration parts of Bacula.
+They are new columns to display descriptions and to dependency check
+in which resource every single resource is used, for example: Pool X is
+in use by Job Y and JobDefs Z. At the end we added a self-test to do
+a health state check of each API instance used by the web interface.
 
 Bacularis Web
- - Add LDAP filters support in LDAP authentication method
- - Update Polish translations
+ - Add health self-test check
+ - Add function to config part for checking where resource is used
+ - Add description column to director, storage, client and console resource configuration
+ - Add job files difference function
 
 Bacularis API
- - Update Polish translations
+ - Add endpoint to run health self-test
+ - Add job file difference endpoint
 
 Bacularis Common
- - Disable logging in with empty password for LDAP authentication method
- - Add support for LDAP filters
+ - Add job file difference method validator
 
