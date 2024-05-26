@@ -20,7 +20,7 @@ for actively reporting to us new feature requests and bug reports.
 **Bacularis Common**
  - Fix support for apostrophe in data view name
 
-## New directives and new directive values:
+## New directives and new directive values
 ```
  - Director:
    = JobDefs
@@ -55,7 +55,7 @@ for actively reporting to us new feature requests and bug reports.
      > AllowedScriptDirectories
 ```
 
-## Changed directives from text box to multiple text box:
+## Changed directives from text box to multiple text box
 ```
   - Director
     = Director
@@ -85,7 +85,7 @@ for actively reporting to us new feature requests and bug reports.
       > TlsAllowedCn
 ```
 
-## Removed directives:
+## Removed directives
 ```
   - Director
     = Pool
