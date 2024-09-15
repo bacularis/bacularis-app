@@ -37,5 +37,6 @@ for being active. With your involvement we can much more.
 
 **Bacularis Common**
  - Add interfaces to create new plugins
+ - Add checking method if subtab is opened
  - Fix install Bacula using initial wizard if SELinux is enabled
 
