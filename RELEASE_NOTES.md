@@ -16,14 +16,26 @@ notifications and for Mattermost notifications.
 Finally, we would like to thank the entire Community for bug reports, ideas and
 for being active. With your involvement we can much more.
 
-Changes:
+## Main changes
+
+**Bacularis Web**
  - Add new file storage wizard
  - Add support for plugins
  - Add e-mail notification plugin
  - Add Mattermost notification plugin
  - Simplify restore wizard and use restore path from restore job
  - Add audit logging to new functions
+ - Fix setting job properties in run job window
+ - Fix auto-switching job summary tab on job view page
  - Fix virtualfull job wizard for using existing jobs
  - Fix using custom Bacula package repository in OS profile
  - Move new storage wizard error messages to error window
+
+**Bacularis API**
+ - Add name parameter to /storages API endpoint
+ - Add default operator for SQL query criterias
+
+**Bacularis Common**
+ - Add interfaces to create new plugins
+ - Fix install Bacula using initial wizard if SELinux is enabled
 
