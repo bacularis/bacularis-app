@@ -1,42 +1,36 @@
 
-We are pleased to let you know about a new Bacularis release. We continue
-the action "Bacula for Everybody!" for making first contact with Bacula
-easier for new users and this time we prepared a new file storage wizard.
-It enables to create both single storage devices and multi-device autochangers
-as well.
+Bacularis 4.2.0 introduces support for a plugin interface on the API side.
+So, since now users are able to create own API-side plugins in the same way
+as they can already create Web-side plugins. For a good start we provided
+a Bacula configuration plugin interface and we prepared first API plugin for
+attaching pre/post config actions.
 
-Second significant change is support for plugins. This is a friendly plugin
-interface to easily extend Bacularis for new functions. The first step in this
-feature is support for the web interface plugins. To prepare a plugin you will
-need a bit of knowledge about PHP language and object-oriented programming. If
-you are not strong PHP programmer, don't worry, it is really simple interface
-to create new plugins. We also prepared two first plugins: for e-mail
-notifications and for Mattermost notifications.
+On the Bacula deployment side, we extended support for Bacula packages from
+bacula.org. It significantly simplifies configuring OS profiles to use
+bacula.org packages. It causes that using system Bacula packages, packages
+from bacula.org or packages provided in self-hosted package repository can
+easily be configured in the OS profile.
 
-Finally, we would like to thank the entire Community for bug reports, ideas and
-for being active. With your involvement we can much more.
+This version is also bug fix release. We fixed couple of bugs found in
+the deployment function.
 
 ## Main changes
 
 **Bacularis Web**
- - Add new file storage wizard
- - Add support for plugins
- - Add e-mail notification plugin
- - Add Mattermost notification plugin
- - Simplify restore wizard and use restore path from restore job
- - Add audit logging to new functions
- - Fix setting job properties in run job window
- - Fix auto-switching job summary tab on job view page
- - Fix virtualfull job wizard for using existing jobs
- - Fix using custom Bacula package repository in OS profile
- - Move new storage wizard error messages to error window
+ - Extended support for deploying with Bacula packages from bacula.org
+ - Unify using Web plugins
+ - Improve displaying dashboard totals on medium screens
+ - Move table toolbar function to Common
 
 **Bacularis API**
- - Add name parameter to /storages API endpoint
- - Add default operator for SQL query criterias
+ - Add API plugin support
+ - Add Bacula configuration plugin
 
 **Bacularis Common**
- - Add interfaces to create new plugins
- - Add checking method if subtab is opened
- - Fix install Bacula using initial wizard if SELinux is enabled
+ - Add interface for Bacula config plugins
+ - Update SELinux policy module
+ - Improve plugin support organization
+ - Fix SD config permission setting
+ - Move table toolbar function to Common
+ - Move Bacula config module to API
 
