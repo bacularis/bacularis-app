@@ -1,27 +1,29 @@
 
-This is new function and bug fix release. We prepared something useful for
-cloud storage users. It is a new wizard that creates a new cloud storage ready
-to work with Bacula. The only requirement is to have the cloud plugin installed.
-Rest is realized in this new wizard. There is possible to create both single
-cloud storage and cloud autochangers as well.
+This is a new function and bug fix release. We prepared a new tape storage wizard
+that can be very useful for users who have the tape devices (tape library,
+autoloader or single tape drive). The new wizard adds the tape storage to Bacula
+and Bacularis. Users who already use the tape storage with Bacula, now using
+this wizard can enable the Bacularis autochanger management. At the end
+single tape drive users are able to add this device to Bacula.
 
-We improved a functions to set access for specific Bacula resources. They are
-functions on the security page. We also added protection to not assign restricted
-access to the 'Main' host that always should stay the full access host.
-
-On the packages side, we are ready to support the Ubuntu 24.10 Oracular Oriole.
-Packages for this Ubuntu version are ready starting from this Bacularis 4.3.0.
+Besides that we extended the Bacularis API endpoints for the device management.
+At the end we fixed a couple of bugs reported by the community.
 
 ## Main changes
 
 **Bacularis Web**
- - Add new cloud storage wizard
- - Add OS profile for Ubuntu 24.10 Oracular Oriole
- - Add descriptions to functions on deployment and security pages
- - Improve file storage wizard
- - Misc improvements to set access function on security page
- - Fix drive index in new file storage wizard
+ - Add new tape storage wizard
+ - Fix empty jobs and job report tables if used search filters
+ - Fix using copy config with selecting jobdefs in new job window
+ - Fix cloud device labels in cloud storage wizard
+
+**Bacularis API**
+ - Update API documentation
+ - Add new endpoints to read/create/update/delete autochanger config
+ - Add to device config module managing single device
+ - Fix sudo runas user and runas group fields on devices page in API panel
 
 **Bacularis Common**
- - Fix javascript error in Bacula resource permission settings
+ - Extend device error codes
+ - General validation improvements
 
