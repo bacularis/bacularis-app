@@ -47,6 +47,12 @@ functions and authentication modules.
  * Add detecting web server method
  * Extend escaping special characters in su module
  * Update application config
+ * Update SELinux policy module
+ * Use retry-after header value to waiting on next request
+ * Switch Let's Encrypt directory from staging to production
+ * Fix creating Let's Encrypt certificate
+ * Fix displaying error messages in admin access window
+ * Fix displaying address in common name field
 
 **Bacularis Web**
 
