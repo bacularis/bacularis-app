@@ -818,13 +818,13 @@ THE SOFTWARE.
 Bacularis uses DataTables library for tables.
 
 Directories:
-  protected/vendor/bower-asset/datatables.net
-  protected/vendor/bower-asset/datatables.net-dt
-  protected/vendor/bower-asset/datatables.net-buttons
-  protected/vendor/bower-asset/datatables.net-buttons-dt
-  protected/vendor/bower-asset/datatables.net-responsive
-  protected/vendor/bower-asset/datatables.net-responsive-dt
-  protected/vendor/bower-asset/datatables.net-select
+  protected/vendor/npm-asset/datatables.net
+  protected/vendor/npm-asset/datatables.net-dt
+  protected/vendor/npm-asset/datatables.net-buttons
+  protected/vendor/npm-asset/datatables.net-buttons-dt
+  protected/vendor/npm-asset/datatables.net-responsive
+  protected/vendor/npm-asset/datatables.net-responsive-dt
+  protected/vendor/npm-asset/datatables.net-select
 
 
 Copyright SpryMedia Limited and other contributors
