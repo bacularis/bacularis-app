@@ -760,7 +760,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 Bacularis uses Opentip JavaScript framework.
 
-Directory: protected/vendor/bower-asset/opentip
+Directory: protected/vendor/npm-asset/opentip
 
 
 More info at http://www.opentip.org
@@ -852,24 +852,17 @@ THE SOFTWARE.
 
 Bacularis uses Font Awesome Free for icons.
 
-Directory: protected/vendor/bower-asset/fontawesome
+Directory: protected/vendor/npm-asset/fortawesome--fontawesome-free
 Files:
   htdocs/themes/Baculum-v2/fonts/css/fontawesome-all.min.css
-  htdocs/themes/Baculum-v2/fonts/webfonts/fa-brands-400.eot
-  htdocs/themes/Baculum-v2/fonts/webfonts/fa-brands-400.svg
   htdocs/themes/Baculum-v2/fonts/webfonts/fa-brands-400.ttf
-  htdocs/themes/Baculum-v2/fonts/webfonts/fa-brands-400.woff
   htdocs/themes/Baculum-v2/fonts/webfonts/fa-brands-400.woff2
-  htdocs/themes/Baculum-v2/fonts/webfonts/fa-regular-400.eot
-  htdocs/themes/Baculum-v2/fonts/webfonts/fa-regular-400.svg
   htdocs/themes/Baculum-v2/fonts/webfonts/fa-regular-400.ttf
-  htdocs/themes/Baculum-v2/fonts/webfonts/fa-regular-400.woff
   htdocs/themes/Baculum-v2/fonts/webfonts/fa-regular-400.woff2
-  htdocs/themes/Baculum-v2/fonts/webfonts/fa-solid-900.eot
-  htdocs/themes/Baculum-v2/fonts/webfonts/fa-solid-900.svg
   htdocs/themes/Baculum-v2/fonts/webfonts/fa-solid-900.ttf
-  htdocs/themes/Baculum-v2/fonts/webfonts/fa-solid-900.woff
   htdocs/themes/Baculum-v2/fonts/webfonts/fa-solid-900.woff2
+  htdocs/themes/Baculum-v2/fonts/webfonts/fa-v4compatibility.ttf
+  htdocs/themes/Baculum-v2/fonts/webfonts/fa-v4compatibility.woff2
 
 Full sources: https://github.com/FortAwesome/Font-Awesome
 
@@ -881,7 +874,7 @@ Icons: CC BY 4.0 License, Code: MIT License, Fonts: SIL OFL 1.1 License
 
 Bacularis uses gauge.js library to display values in gauges.
 
-Directory: protected/vendor/bower-asset/gaugejs
+Directory: protected/vendor/npm-asset/valuatum--gauge.js
 
 
 MIT License
