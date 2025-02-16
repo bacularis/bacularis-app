@@ -1,40 +1,59 @@
 
-This is a new function release. This time we focused on new usability functions and improvements.
+This is the bug fix and update release. Even though in this version we didn't add new functions,
+this is significant release because we updated to latest version the major libraries which
+Bacularis uses. Specially worth to mention is the table library that required adding many changes
+to adapt Bacularis for the newest version.
 
-The first new function is tagging. This feature enables to tag almost all resource types available
-in the tables. There can be tagged Bacula resources (jobs, clients, volumes...) and Bacularis
-resources (users, roles, API hosts...). Everywhere the tag icon is available, there is possible to
-tag elements.
+With this release we also changed source of taking the front-end dependencies from the Bower package
+registry to the NPM package registry. It is because from a long time the Bower has been announced as
+deprecated and NPM registry better fits the Bacularis requirements. The only dependencies that still
+are taken from Bower are the PRADO framework dependencies: jQuery and jQuery-UI, that source we
+are not able to change.
 
-Second usability function is data views for the Bacula configuration resources. Data views allow to
-arrange in groups the resources by defined criterias. So far, the data views were available for only
-a few resources. Now there is possible to use it also with the Bacula config resources both for
-Director, Storage, Client and Console components configuration. For example users can group in
-logical sets the FileSets or Clients or Jobs or all other configuration resources.
-
-In addition to these two major features, we have also made some smaller improvements to the overall
-experience of the web interface.
+On the bug fix side, we fixed couple of problems. At the end we improved the general web interface
+view and we changed the default fonts. It can be specially noticeable for the Firefox web browser users.
 
 ## Main changes
 
 **Bacularis Web**
 
- * Add tag support
- * Add tag manager
- * Add data views to Bacula configuration pages
- * Add clear search field button for table search input
- * Add local tag management on user account settings page
- * Add global tag management on application settings page
- * Improve displaying labels on Firefox
- * Improve host name validation
- * Improve job list table view
- * Increase allowed drive and slot numbers in storage commands
- * Fix getting tags if user does not have any local tag
- * Fix removing tags
+ * Update table modules to latest versions
+ * Adapt tables to latest library version
+ * Switch from Bower to NPM package registry
+ * Fix space and speed gauges precision on storage status page
+ * Fix default sorting in job history table on job details page
+ * Adapt paths to new dependencies
+ * Change icon in set access buttons
+ * Add translation texts
+ * Update LICENSE file
+ * Update paths in LICENSE file
+
+**Bacularis API**
+
+ * Update table modules to latest versions
+ * Adapt tables to latest library version
+ * Switch from Bower to NPM package registry
+ * Update paths in LICENSE file
+ * Update LICENSE file
 
 **Bacularis Common**
 
- * Add clear button to search fields
- * Add tag styles
- * Fix reloading web server config after certificate installation if SELinux is enabled
+ * Update table modules to latest versions
+ * Adapt tables to latest library version
+ * Update styles for latest table library
+ * Change web interface fonts
+ * Switch from Bower to NPM package registry
+ * Fix view in resource access settings
+ * Fix table behaviour in responsive mobile view
+ * Fix align resource permission radio buttons
+ * Update paths in LICENSE file
+ * Update LICENSE file
+ * Remove outdated images
+
+**Bacularis APP**
+
+ * Update table modules to latest versions
+ * Switch from Bower to NPM package registry
+ * Update paths in LICENSE file
+ * Update LICENSE file
 
