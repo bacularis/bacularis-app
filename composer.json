@@ -61,6 +61,8 @@
 		"npm-asset/datatables.net-buttons": "^3",
 		"npm-asset/datatables.net-buttons-dt": "^3",
 		"npm-asset/datatables.net-dt": "^2",
+		"npm-asset/datatables.net-fixedheader": "^4",
+		"npm-asset/datatables.net-fixedheader-dt": "^4",
 		"npm-asset/datatables.net-responsive": "^3",
 		"npm-asset/datatables.net-responsive-dt": "^3",
 		"npm-asset/datatables.net-select": "^3",

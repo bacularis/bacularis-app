@@ -822,6 +822,8 @@ Directories:
   protected/vendor/npm-asset/datatables.net-dt
   protected/vendor/npm-asset/datatables.net-buttons
   protected/vendor/npm-asset/datatables.net-buttons-dt
+  protected/vendor/npm-asset/datatables.net-fixedheader
+  protected/vendor/npm-asset/datatables.net-fixedheader-dt
   protected/vendor/npm-asset/datatables.net-responsive
   protected/vendor/npm-asset/datatables.net-responsive-dt
   protected/vendor/npm-asset/datatables.net-select
