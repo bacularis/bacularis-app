@@ -39,6 +39,7 @@ We wish you smooth installations and upgrades!
  * Add organization info to user wizard summary
  * Add Debian 13 Trixie support
  * Fix new user wizard if no organization selected
+ * Fix undefined array key error in set user access on security page and in new user wizard
 
 **Bacularis API**
 
