@@ -1,6 +1,5 @@
 # Bacularis - The Bacula web interface
 
-Bacularis is a web interface to configure, manage and monitor Bacula backup environment. It is a complete solution for setting up backup jobs, doing restore data, managing tape or disk volumes in local and remote storage, work with backup clients, and doing daily administrative work with backups. It also supports autochanger management. Bacularis provides advanced user management and role-based access control that enable to configure it for regular users where every user can log in to the web interface and does backup and restore own computer data only.
 
 ![GitHub Release](https://img.shields.io/github/v/release/bacularis/bacularis-app)
 ![Packagist Downloads](https://img.shields.io/packagist/dt/bacularis/bacularis-app)
@@ -8,13 +7,26 @@ Bacularis is a web interface to configure, manage and monitor Bacula backup envi
 ![Packagist Dependency Version](https://img.shields.io/packagist/dependency-v/bacularis/bacularis-app/PHP)
 
 
-The project consists of two web applications: the web interface and Bacula programming interface (API) with separate administrative panel. The web interface can work with multiple Bacularis API instances to configure and manage remote Bacula components.
+**Bacularis** is a web interface designed to configure, manage, and monitor the Bacula backup environment. It offers a complete solution for setting up backup jobs, restoring data, managing tape or disk volumes on both local and remote storage, working with backup clients, and handling daily backup administration tasks. Autochanger management is also supported.
 
-Bacularis is a friendly fork of Baculum. It has been founded by Baculum's creator to simplify Baculum features that they could be used not only by users with strong Bacula skills but also by beginners or intermediate users.
+Bacularis includes advanced user management with role-based access control, allowing configuration for regular users. Each user can log in to the web interface and perform backup and restore operations for their own computer data only.
+
+## Architecture
+
+The project consists of two web applications:
+
+ * the **web interface**, and
+ * the **Bacularis API**, which includes a separate administrative panel.
+
+The web interface can connect to multiple Bacularis API instances, enabling centralized configuration and management of remote Bacula components.
+
+## Project background
+
+**Bacularis** is a friendly fork of **Baculum**. It was created by the creator of Baculum to simplify its functionality—making it accessible not only to experienced Bacula users but also to beginners and intermediate users.
 
 ## Requirements
 
-Before installing please make sure you have installed PHP >= 7.4 and the following PHP modules:
+Before installation, ensure you have **PHP >= 7.4** and the following PHP modules installed:
 
  - php-bcmath
  - php-curl
@@ -28,48 +40,41 @@ Before installing please make sure you have installed PHP >= 7.4 and the followi
 
 ## Installation
 
-One of the ways to install and update Bacularis is using Composer for that.
+One of the methods for installing and updating Bacularis is using **Composer**.
 
-If you don't have Composer installed, you can use the following commands to install it:
+If Composer is not installed on your system, you can use the following commands to install it:
 
 ```
 curl -s http://getcomposer.org/installer | php
 mv composer.phar /usr/local/bin/composer
 ```
 
-Once it is done, you can install Bacularis:
+Once Composer is ready, install Bacularis by running:
 
 ```
 composer create-project bacularis/bacularis-app
 ```
 
-At the end you need to run as the root user an install script that will set permissions for files and directories and also that will prepare the web server configuration file:
+After installation, run the setup script as the root user. This script will:
+
+ * set appropriate file and directory permissions, and
+ * prepare the web server configuration file.
 
 ```
 bacularis-app/protected/tools/install.sh
 ```
 
-## Upgrade
-
-To upgrade Bacularis you need to run the following command in the Bacularis project directory:
-
-```
-composer update
-```
-
 ## Documentation
 
-Bacularis documentation is available here: https://bacularis.app/doc/
-
-Bacularis API documentation you can find here: https://bacularis.app/api/
+ * **Bacularis documentation**: https://bacularis.app/doc/
+ * **Bacularis API documentation**: https://bacularis.app/api/
 
 ## Live Demo
 
-If you would like to try Bacularis before installing it, you can try live demo available at the following address:
+Want to try Bacularis before installing it? Visit the live demo at:
 
 https://demo.bacularis.app
 
 ## Project homepage
 
-The project main page is https://bacularis.app
-
+Main project website: https://bacularis.app
