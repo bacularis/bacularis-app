@@ -1,47 +1,81 @@
 
-We are pleased to announce the release of **Bacularis 5.8.0**.
-This version introduces **improved accuracy** for running job byte and file
-estimations. Users can now choose between quick estimations (default) or
-more precise data gathered directly from the Bacula client. This feature
-was inspired by an idea from Community user Rui.
+We are pleased to announce the release of **Bacularis 5.9.0**. This version introduces
+several important new features and improvements, which you can find detailed below.
 
-This release also focuses on **language support**: Spanish, German, Italian,
-and Polish translations have been updated.
+### MS SQL Server database plugin
 
-Additionally, this version includes **several bug fixes**.
-Community contributor MmAaXx500 provided a fix for OIDC single sign-on
-compatibility issues affecting certain identity providers (e.g. Nextcloud).
-We have also corrected an issue related to the SSL certificate creation form.
+We have introduced a brand-new **plugin** for backing up **Microsoft SQL Server databases**.
+It provides advanced protection for:
 
-Finally, Bacularis has been prepared to support the new **openSUSE 16.0**
-release.
+ * Databases
+ * Transaction logs
+ * Encryption data
 
-We wish you smooth installations and upgrades!
+The plugin supports both Windows and Linux MS SQL Server instances, in local
+as well as remote locations. It also includes **Point-in-Time Recovery** (PITR)
+directly available from the web interface.
+
+All technical details for this plugin are available in the dedicated documentation
+chapter:
+
+https://bacularis.app/doc/plugins/database/microsoft-sql-server-backup-plugin.html
+
+### Sudo-rs support
+
+In version ``5.9.0``, we have also added basic support for **sudo-rs**. Below
+ is a list of features currently supported with sudo-rs. Full support is planned
+ for future releases after ``5.9.0``.
+
+ * Bconsole command execution
+ * Bacula JSON tools (Bacula configuration-related functions in Bacularis)
+ * Actions (starting, stopping, and restarting Bacula components)
+ * Software Management:
+
+   * Deploying the Bacula File Daemon
+   * Deploying the Bacula Storage Daemon
+   * Deploying the Bacula Bconsole
+
+ * Installing TLS/SSL certificate
+ * Changing web server port
+
+Please note that these sudo-rs changes are fully transparent to Bacularis users
+and do not require any additional actions or configuration. Traditional sudo
+continues to be fully supported and will remain supported in the future.
+
+### Other functions
+
+We have added a new **OS profile** for Bacula and Bacularis deployments
+on **Ubuntu 25.10 Questing Quokka**.
+
+We have also improved debug logging, with special focus on plugin-related messages.
+
+### Fixes
+
+This release includes several bug fixes. One notable fix addresses issues
+ with OIDC login when using Alpine-based Docker container images.
+
+We wish you easy installations and successful upgrades!
+
 
 ## Main changes
 
-**Bacularis Web**
-
- * Add button to accurate job estimation for bytes/files progress bars in running job status
- * Improve job estimation in run job window
- * Make at\_hash optional to comply with OIDC spec
- * Make total number of backed up files more readable
- * Add MmAaXx500 to AUTHORS
-
 **Bacularis Common**
 
- * Fix reset common name text field in SSL certs form
- * Update SELinux policy module for openSUSE 16.0
- * Add MmAaXx500 to AUTHORS
+ * Add MS SQL Server database backup plugin
+ * Add support for sudo-rs
+ * Add windows path checker
+ * Add debug log to execution commands
+ * Log debug if enabled by debug parameter
+ * Improve mask password pattern
+ * Enable short param support in prepare command parameters
+ * Set global debug parameter
 
-**Languages**
+**Bacularis Web**
 
- * Update Spanish translations
- * Update German translations
- * Update Italian translations
- * Update Polish translations
-
-**Contributors**
-@MmAaXx500
-Rui
+ * Add support for sudo-rs
+ * Add OS profile for Ubuntu 25.10 Questing Quokka
+ * Stop passing unmodified options to restore process
+ * Enable using multi-category plugin parameters in restore wizard
+ * Fix unassign API hosts from API host groups on host remove
+ * Fix PHP error in web config wizard
 
