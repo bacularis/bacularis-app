@@ -69,6 +69,8 @@ We wish you easy installations and successful upgrades!
  * Improve mask password pattern
  * Enable short param support in prepare command parameters
  * Set global debug parameter
+ * Update application configuration
+ * Fix server-name parameter in MS SQL Server plugin
 
 **Bacularis Web**
 
