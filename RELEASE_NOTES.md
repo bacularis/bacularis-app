@@ -1,131 +1,129 @@
 
-We are pleased to announce the release of **Bacularis 5.11.0**. This version
-introduces a number of improvements to the web interface aimed at making it
-even more convenient to use, simplifying selected actions, and reducing the
-number of steps required to perform them.
+We are pleased to announce the release of **Bacularis 6.0.0**. This is a new
+major release. We know that many of you have been waiting for this version
+in order to upgrade from your current major version ``5.0.0``. Compared to
+version ``5.0.0``, this release represents nearly a year of development and
+comes with a long list of new features and improvements. We are very happy
+to finally deliver this new version to you.
 
-### Dashboard Enhancements
+Binary packages for the major version ``6.0.0`` are now available to all
+users in all official Bacularis package repositories. Let’s take a look
+ at what’s new in version ``6.0.0``.
 
-One of the most notable additions is the introduction of new tabs on the
- Dashboard page. These provide information about:
+### Role mapping for Bacularis
 
- * the most recently executed Bacula jobs,
- * jobs scheduled for today,
- * jobs scheduled for the next five days.
+We have introduced Bacularis role mapping. This feature enables centralized
+management of Bacularis roles from an external IAM system.
 
-With these improvements, users can immediately see upcoming Bacula activity
-right after logging into the web interface.
+Currently, two operating modes are supported:
 
-### Bulk Actions for Volumes
+ * Local role management within Bacularis
+ * Remote role management for logins using an Identity Provider (IdP)
 
-This release introduces a set of new bulk actions for the Volumes list. Users
-can now perform operations on single or multiple volumes at once. Supported
-bulk actions include:
+Remote management is possible through mapping IAM roles to Bacularis roles.
+This feature request was submitted by a member of the Bacularis community,
+**jsiit**.
 
- * setting volume status,
- * changing the volume pool,
- * updating data retention,
- * configuring recycle, inchanger, and enabled flags,
- * and more.
+You can read more about this feature in the Bacularis documentation:
 
-These enhancements significantly streamline volume management tasks.
+https://bacularis.app/doc/users/role-mapping.html
 
-### Bulk Actions for Other Resource Lists
+### Backup verification from the job list
 
-New bulk actions have also been added to the following lists:
+Another new feature is the ability to verify backups directly from the Bacula
+job list. You can select the jobs you want to verify and run verification for
+them using your dedicated Verify-type job.
 
- * Jobs
- * Clients
- * Storage
- * Pools
+### Extended "breadcrumbs" navigation
 
-All of them support performing actions on both individual items
-and selected groups of items.
+We have introduced a new extended "breadcrumbs"-style navigation menu. This is
+not a typical breadcrumbs component – in addition to navigating back through
+the page hierarchy, it also allows you to execute any function available from
+each page within the current hierarchy.
 
-### Data Views for Jobs
+We hope this new navigation component will make moving around Bacularis even
+more intuitive and efficient.
 
-Another long-awaited feature is the introduction of data views for the Jobs list.
-This allows Bacula jobs to be organized into logical groups for easier management.
-The Jobs list was one of the few remaining areas without support for data views,
-and we are happy to finally bring this functionality there.
+### Enabling and disabling Bacula components
 
-### API Updates
+Another new feature is the ability to temporarily or permanently enable and
+disable Bacula clients directly from the client list.
 
-On the API side, we have added several new actions, particularly for the Pool and
-Client endpoints. As usual, the API documentation has been updated accordingly.
+ * **Temporary** enable/disable operations are executed using the Bconsole
+   ``enable`` and ``disable`` commands.
+ * **Permanent** disable is performed using the configuration directive
+    ``Enabled = yes/no``.
 
-### Bug Fixes
+A very similar feature has also been introduced in this version for
+temporarily enabling and disabling storage resources directly from
+ the storage list.
 
-We have also implemented several fixes in the new tape storage wizard.
+### Improvements and API updates
 
-### Important Notice
+We have also made improvements to page headers to make them clearer and
+ more readable.
 
-If your Bacularis instance includes users with limited Bacula resource permissions
-(using Console ACLs), and you would like them to see their scheduled Bacula jobs on
-the Dashboard page, you need to add an additional CommandAcl directive to their
-ConsoleACL configuration to allow the use of the status command, for example:
+On the API layer, we added several new endpoints, particularly for the newly
+introduced enable/disable functionality for Bacula components. As usual,
+the API documentation has also been updated accordingly.
 
- CommandACL = status
+### Bug fixes
 
-If your Bacularis users do not use Console ACLs, you do not have non-administrator
-users, or you do not wish to expose job schedules to users, no additional action is
- required.
+This release includes both important fixes – for example, related to
+authorization – as well as smaller fixes, mainly focused on visual and UI
+improvements.
 
-For more details, please refer to the related Git commit:
-https://github.com/bacularis/bacularis-web/commit/a91e8d95795aef74b2c4db24d412fc68215dc687
+Any feedback is highly appreciated. Please let us know your impressions,
+issues, and thoughts.
 
-We wish everyone smooth installations and upgrades.
+We wish you smooth installations and upgrades.
 
-Enjoy using Bacularis!
+Enjoy using Bacularis.
 
-— The Bacularis Team
+ – The Bacularis Team
 
 ### Main changes
 
 **Bacularis Web**
 
- * Add to dashboard tabs with recent jobs, scheduled for today and schedules for next 5 days
- * Add configurable data views to job list
- * Add delete job resource bulk action in job list
- * Add delete storage resource bulk action in storage list
- * Add delete client resource bulk action in client list
- * Add delete pool resource bulk action in pool list
- * Add set volume status bulk action
- * Add set volume pool bulk action
- * Add set volume retention bulk action
- * Add set volume use duration bulk action
- * Add enable/disable volume recycle flag bulk action
- * Add enable/disable volume enabled flag bulk action
- * Add enable/disable volume inchanger flag bulk action
- * Add to storage view page message about tape storage wizard
- * Add missing text to translation files
- * Add new delete actions logging to audit log
- * Improve field view in status schedule
- * Extend CommandAcls used by web interface for status command
- * Set cursor pointer in selectable tables
- * Use server time in schedule results on dashboard
- * Remove requiretty flag from sudo settings
- * Use from common part volstatuses possible to set by user
- * Fix hide bulk actions element
- * Fix PHP error in new tape storage wizard
- * Fix validation in new tape storage wizard
-
-**Bacularis Common**
-
- * Add new pool error
- * Improve dashboard table styles
- * Move to common part volstatuses possible to set by user
+ * Add role mapping
+ * Add verify backup jobs bulk action in job history list
+ * Add extended breadcrumbs navigation control
+ * Add enable clients bulk action in client list
+ * Add disable clients bulk action in client list
+ * Add enabled flag column to client list
+ * Add enable and disable storage bulk action in storage list
+ * Add page header control
+ * Add role mapping settings in identity provider configuration
+ * Add log run and rerun job action to audit log
+ * Add loader to disable client window
+ * Improve authorization error page
+ * Use role mapping on security page
+ * Use extended breadcrumbs nav and page headers in pages
+ * Move verify differences job status to warning type
+ * Set new style for resource control
+ * Set identifiers in label volume and update slot components
+ * Fix logout action on authorization error page
+ * Fix displaying authorization error if user has no role assigned
+ * Fix deselect client list items on disable client error
+ * Fix bulk actions modal portlet
+ * Fix load role mapping list for new identity provider settings
+ * Fix Polish translation text
+ * Fix indentation on roles page
+ * Fix code style
 
 **Bacularis API**
 
- * Add delete client endpoint
- * Add delete pool endpoint
- * Add new delete pool endpoint to OpenAPI specification
- * Add new delete client endpoint to OpenAPI specification
- * Add current time epoch to jobtotals result
- * Make client checking more accurate + refactor
- * Make pool checking more accurate + refactor
- * Update delete client endpoint description and error codes in OpenAPI specification
- * Update delete pool endpoint description and error codes in OpenAPI specification
- * Update OpenAPI specification
+ * Allow enable and disable commands to run in bconsole
+ * Add disable client endpoint
+ * Add enable client endpoint
+ * Add enable/disable storage to OpenAPI documentation
+ * Add disable storage endpoint
+ * Add enable storage endpoint
+ * Update OpenAPI documentation
+
+**Bacularis Common**
+
+ * Add breadcrumbs nav and page header styles
+ * Extend call action function
 
