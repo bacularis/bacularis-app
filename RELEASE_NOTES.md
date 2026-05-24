@@ -1,130 +1,134 @@
 
-We're happy to announce the release of Bacularis ``6.1.0``. This update brings
-quite a long list of changes, definitely more than we originally planned when
-we started preparing this release.
+Hello Community,
 
-### New global resource search
+We are very pleased to announce the release of Bacularis ``6.2.0``.
 
-One of the highlights of this release is the new global Bacula resource search.
-It's modern, user-friendly, and fully configurable.
+This release represents a significant amount of work over the past months,
+including development, testing, and preparation. Without a doubt, this is
+one of the largest releases in the history of Bacularis.
 
-Our goal was to provide a simple way to search across clients, storage, jobs,
-and many other resources - all in one place. We hope this feature will be useful
-both in large environments with many resources and in smaller setups as well.
+Let's take a look at what we have prepared.
 
-You can learn more here and see it in action:
+### AWS EC2 plugin
 
-https://bacularis.app/doc/misc/global-search-box.html
+The main feature of version ``6.2.0`` is the new AWS EC2 virtual machine
+backup plugin.
 
-### Dashboard improvements
+The plugin supports backups of both complete EC2 instances and selected
+EBS volumes, including their data and metadata. This makes it possible
+to restore environments that closely reproduce the original EC2 instances.
+During restore operations, selected instance properties can also be overridden,
+such as instance type, security groups, or Availability Zone settings.
 
-We've introduced several enhancements to the dashboard, including a new time
-range selector for charts. Instead of relying only on fixed ranges, you can
-now dynamically adjust the time scope whenever needed.
+The AWS EC2 plugin supports both full and incremental block-level backups,
+helping reduce transferred data and improve backup performance.
 
-The static range option is still available and remains the default setting.
+We are excited to deliver this plugin to the community and hope it will
+help protect AWS EC2 workloads more efficiently.
 
-### Upcoming OS support
+Complete technical documentation for the plugin is available in the new
+dedicated documentation section:
 
-We've added support for upcoming distributions (not yet officially released
-at the time of writing):
+https://bacularis.app/doc/plugins/cloud/amazon-aws-ec2-backup-plugin.html
 
- * Ubuntu 26.04 Resolute Raccoon (LTS)
- * Fedora 44
+### New tools for plugin development
 
-This support also includes new OS profiles for deploying Bacula and Bacularis
-instances on remote hosts. We've prepared binary package repositories for
-these systems and updated the SELinux policy module accordingly.
+Along with the AWS EC2 plugin, we prepared a number of generic tools that
+were required for implementing EC2 backup functionality and that will also
+be useful for future plugins.
 
-### API updates
+These include cloud communication tools, data stream processing tools,
+and several other components. Thanks to these additions, developing future
+plugins should become easier and faster.
 
-On the API side, we've added several new endpoints and extended existing ones
-with additional parameters to provide more flexibility.
+### PRADO upgrade
 
-### UI and navigation tweaks
+Version ``6.2.0`` is not only about the AWS EC2 plugin.
 
-We've also made a number of smaller improvements to the dashboard and breadcrumb
-navigation. These include visual refinements and text corrections to improve
-overall usability.
+As previously announced, we prepared the first phase of changes required
+for the planned upgrade of the PRADO PHP framework that powers Bacularis.
+
+In this release, the framework itself remains unchanged, but we are now
+one step closer to the upgrade.
+
+### Plugin improvements
+
+Another area of improvement in this release is the Bacularis plugin system.
+
+This includes improved plugin event logging, enhancements to plugin parameter
+handling, and several other changes. These improvements may be particularly
+useful for users developing their own Bacularis plugins.
 
 ### Bug fixes
 
-This release includes several bug fixes. We'd like to take this opportunity to
-thank our community members for their engagement and support. It really means
-a lot.
+Finally, we included several bug fixes.
 
-### Technical note
+Although the number of fixes is relatively small, there is one that we would
+particularly like to mention. We fixed an issue with missing port numbers in
+Bacularis URLs when running behind Nginx installations.
 
-When upgrading to version ``6.1.0``, we recommend updating both:
+The issue was caused by recent changes in Nginx configurations used in modern
+distributions. This problem was reported by a member of our community **sgw**,
+and the Bacularis fix adjusts the interface behavior accordingly.
 
- * the web interface host
- * and the API host
+We wish you successful installations and upgrades.
 
-This is required for the new search feature to work correctly.
+As always, we encourage you to share feedback, report issues, and discuss your
+experiences with the Bacularis community.
 
-If your web interface and API are running within the same local Bacularis
-instance, or if you don't plan to use the search feature, this does not apply
-to you.
-
-We wish you smooth installations and upgrades, and a great time using Bacularis!
-
- - The Bacularis Team
+The Bacularis Team
 
 
 ### Main changes
 
 **Bacularis Web**
 
- * Add global search box
- * Add OS profiles for Ubuntu 26.04 and Fedora 44
- * Add to dashboard time range select element
- * Add to pie charts option to show percent values
- * Add search box configuration options in application settings
- * Add support for search result on director view page
- * Improve texts on dashboard page
- * Small visual improvements on dashboard and in breadcrumbs nav
- * Open edit config resource for given parameter
- * Update translation files
- * Replace deprecated rule in PHP-CS-Fixer configuration
- * Update required phpstan version
- * Prepare selected texts to re-translation
- * Improve texts and add sections to display options in application settings
- * Increase visibility of API host selection element
- * Fix OIDC audience claim checking
- * Fix ordered list box control
- * Fix validation in new virtual full job wizard
- * Fix PHP error on searching if old API version used
- * Fix typo error in breadcrumbs nav
- * Fix typo in breadcrumbs menu label
-
-**Bacularis API**
-
- * Add new client resource names endpoint
- * Add new storage resource names endpoint
- * Add new pool resource names endpoint
- * Add search parameter to job resource names endpoint
- * Add search parameter to get configuration endpoint
- * Add search parameter to volume list endpoint
- * Add offset parameter to job resource names endpoint
- * Add offset, limit and search parameters to fileset resource names endpoint
- * Add ILIKE pattern operator support
- * Create new schedule resource names endpoint
- * Update OpenAPI documentation
- * Register new endpoints in API
- * In client resource names endpoint make search results more accurate
- * Replace deprecated rule in PHP-CS-Fixer configuration
- * Update required phpstan version
- * Fix device page icon
+ * Add Cloud page
+ * Add tab to configure Amazon accounts
+ * Add tab to configure EC2 instance backup
+ * Add tab to configure EBS volumes backup
+ * Adapt config directives to new PRADO version
+ * Adapt combobox reload control to new PRADO version
+ * Update texts, add EC2 plugin integration texts
+ * Create new module for job actions - refactor
+ * Set cloud page menu item
+ * Extend name pattern
+ * Fix missing port in HTTP\_HOST web server variable
+ * Fix listing jobs in run job window
+ * Fix identifier in identity provider settings
 
 **Bacularis Common**
 
- * Add styles for search box
- * Add helper for simple list filtering
- * Add new margin for top page elements
- * Update SELinux policy module for Fedora 44
- * Update required phpstan version
- * Replace deprecated rule in PHP-CS-Fixer configuration
- * Fix update for file mtime clumping
- * Fix comment in MySQL and MariaDB backup plugins
- * Fix comment in PostgreSQL backup plugin
+ * Add Amazon AWS EC2 backup plugin
+ * Add Amazon AWS cloud integration
+ * Add Bacularis HTTP worker pool
+ * Add worker pool modules
+ * Add NINI config file module
+ * Add BitSet module
+ * Add tools to work with data streams
+ * Add new Bacularis data format modules
+ * Add placeholder support in plugin parameters form
+ * Add error codes support to HTTP client
+ * Add simple name validator
+ * Improve logging by plugins
+ * Improve default parameters passed to plugins
+ * Improve plugin log messages readability
+ * Improve INI-style config file module
+ * Extend HTTP client modules
+ * Update application settings
+ * Remove unused exception
+ * Fix missing port in HTTP\_HOST web server variable
+
+**Bacularis API**
+
+ * Add describe EC2 instances API endpoint
+ * Add describe EBS volumes API endpoint
+ * Add AWS account API endpoints
+ * Add AWS CLI support
+ * Add workers for EC2 backup, EC2 restore and EC2 local file restore
+ * Add Bacularis AWS account module
+ * Add AWS command module
+ * Add AWS CLI config modules
+ * Update API service configuration
+ * Fix missing port in HTTP\_HOST web server variable
 
