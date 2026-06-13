@@ -86,9 +86,6 @@
 		"pre-update-cmd": [
 			"[ ! -e 'protected/vendor/bacularis/bacularis-common/project/protected/tools/update.sh' ] || protected/vendor/bacularis/bacularis-common/project/protected/tools/update.sh backup"
 		],
-		"pre-patch-apply": [
-			"\\cp -rf protected/vendor/bacularis/bacularis-common/project/protected/patches ./protected/"
-		],
 		"post-update-cmd": [
 			"protected/vendor/bacularis/bacularis-common/project/protected/tools/update.sh restore"
 		]
@@ -101,7 +98,10 @@
 		}
 	},
 	"config": {
-		"vendor-dir": "protected/vendor"
+		"vendor-dir": "protected/vendor",
+		"allow-plugins": {
+			"cweagans/composer-patches": true
+		}
 	},
 	"support" : {
 		"issues" : "https://github.com/bacularis/bacularis-app/issues",
