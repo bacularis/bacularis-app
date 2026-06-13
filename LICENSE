@@ -874,6 +874,18 @@ Icons: CC BY 4.0 License, Code: MIT License, Fonts: SIL OFL 1.1 License
 
 #####################################################################
 
+Bacularis uses Inter font for all texts.
+
+Directory: protected/vendor/npm-asset/fontsource--inter
+
+License - the SIL Open Font License, Version 1.1 - https://openfontlicense.org
+
+Copyright 2016 The Inter Project Authors (https://github.com/rsms/inter)
+Inter-Italic[opsz,wght].ttf: Copyright 2016 The Inter Project Authors
+ (https://github.com/rsms/inter)
+
+#####################################################################
+
 Bacularis uses gauge.js library to display values in gauges.
 
 Directory: protected/vendor/npm-asset/valuatum--gauge.js
