@@ -84,7 +84,7 @@
 			"echo 'PLEASE DO NOT FORGET TO RUN INSTALL SCRIPT: protected/tools/install.sh'"
 		],
 		"pre-update-cmd": [
-			"protected/vendor/bacularis/bacularis-common/project/protected/tools/update.sh backup"
+			"[ ! -e 'protected/vendor/bacularis/bacularis-common/project/protected/tools/update.sh' ] || protected/vendor/bacularis/bacularis-common/project/protected/tools/update.sh backup"
 		],
 		"pre-patch-apply": [
 			"\\cp -rf protected/vendor/bacularis/bacularis-common/project/protected/patches ./protected/"
