@@ -85,7 +85,7 @@
 		],
 		"pre-update-cmd": [
 			"[ ! -e 'protected/vendor/bacularis/bacularis-common/project/protected/tools/update.sh' ] || protected/vendor/bacularis/bacularis-common/project/protected/tools/update.sh backup",
-			"[ -e 'bacularis-backup.tar' ] || protected/tools/update.sh backup"
+			"[ -e 'bacularis-backup.tar' ] || [ ! -e 'protected/tools/update.sh' ] || protected/tools/update.sh backup"
 		],
 		"post-update-cmd": [
 			"protected/vendor/bacularis/bacularis-common/project/protected/tools/update.sh restore"
