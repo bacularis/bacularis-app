@@ -47,6 +47,11 @@ that they have downloaded the latest version of ``composer.json`` when upgrading
 to 6.3.0, following the upgrade procedure described
 [here](https://bacularis.app/doc/brief/updating.html#updating-composer-based-installations).
 
+As previously announced, we have upgraded selected JavaScript libraries used by both
+the web interface and the API panel to their latest available versions. These libraries
+are primarily related to table components and the display of data in tabular form across
+the interface.
+
 Finally, we would like to wish everyone a smooth installation and upgrade experience.
 
 As always, we encourage you to share feedback, report bugs, submit feature requests,
