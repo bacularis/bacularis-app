@@ -7,7 +7,8 @@ This release brings the most significant visual update to Bacularis in quite
 some time. We are introducing a new blue theme that becomes the default
 appearance for both the web interface and the API panel. At the same time,
 we have refreshed many interface elements to make the user experience
-more modern, consistent, and comfortable for everyday use.
+more modern, consistent, and comfortable for everyday use. Bacularis with
+the new look and feel you can see on the [Demo Page](https://demo.bacularis.app)
 
 ### Note
 
@@ -18,7 +19,7 @@ cache and refreshing the page.
 
 We know that some users have become accustomed to the classic green theme.
 For this reason, we have prepared it as an add-on available in the
-[Add-ons Catalog] (https://addons.bacularis.app/add-on/21/bacularis-green/).
+[Add-ons Catalog](https://addons.bacularis.app/add-on/21/bacularis-green/).
 Due to changes introduced in the templates, it is not an exact copy of the
 original theme, but it closely resembles its appearance and behavior.
 
