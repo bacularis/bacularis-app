@@ -77,7 +77,7 @@ resolves an issue reported by a community user concerning the display of tapes
 in an autochanger when the ``Volume Retention`` directive was set to a very
 large value:
 
-[Bacularis API issue 9] (https://github.com/bacularis/bacularis-api/issues/9)
+[Bacularis API issue 9](https://github.com/bacularis/bacularis-api/issues/9)
 
 We wish everyone smooth installations and upgrades.
 
