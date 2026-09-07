@@ -32,10 +32,13 @@ CVE identifiers will be added once they are assigned and published.
 - Escape client address in client details view
 - Fix selected path in verification rules if the search field was used to
   find items
+- Table field escaping fixes
 
 **Bacularis API**
 
 - Additional security hardening and output escaping fixes.
+- Use common render function in tables
+- Fix device path filter
 
 **Bacularis Common**
 
@@ -43,4 +46,5 @@ CVE identifiers will be added once they are assigned and published.
 - Add JSON value helper
 - Add helper for escaping special characters
 - Fix checker support for symbolic links
+- Move text renderer to common script
 
