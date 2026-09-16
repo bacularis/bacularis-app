@@ -43,6 +43,7 @@ The Bacularis Team
 **Bacularis Web**
 
 * Apply security hardening after security review
+* Fix two stored XSS vulnerabilities
 * Add additional verification rules checking
 * Improve import users validation
 * Improve validation in drive unload
