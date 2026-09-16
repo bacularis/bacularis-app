@@ -1,50 +1,60 @@
 
 Hello Community,
 
-Bacularis 6.5.1 is a security and maintenance release that addresses two
-stored cross-site scripting (XSS) vulnerabilities and includes additional
-hardening of output escaping and input validation across the web interface.
+We are pleased to announce the release of Bacularis 6.5.2. As previously
+announced, this is a maintenance release focused primarily on security
+and application hardening.
 
-The reported vulnerabilities could allow specially crafted values to be
-stored and later interpreted as JavaScript when affected pages were viewed.
-Both issues have been fixed in this release. During the review, additional
-similar code paths were also hardened to reduce the risk of related issues.
+Version 6.5.2 includes fixes and changes prepared as part of a security
+review. We strengthened the Bacularis codebase and standardized the way
+data from users, Bacula, the API, and other sources is validated
+and handled securely.
 
-The vulnerabilities affect the following Bacularis versions:
+In this release, we also fixed two reported stored XSS vulnerabilities
+that could allow crafted JavaScript code to be executed in a user's
+browser.
 
-- one stored XSS issue affects versions 1.0.0 through 6.5.0,
-- the second stored XSS issue affects versions 4.7.0 through 6.5.0.
+* The first vulnerability affects versions 1.0.0 through 6.5.1.
+* The second vulnerability affects versions 5.4.0 through 6.5.1.
 
-Both vulnerabilities are fixed in Bacularis 6.5.1.
+Bacularis 6.5.2 includes fixes for both vulnerabilities. CVE identifiers
+will be added once they are published.
 
-Users are encouraged to update to Bacularis 6.5.1 using the installation
-method appropriate for their deployment.
+Users running affected versions are encouraged to upgrade
+to Bacularis 6.5.2.
 
-CVE identifiers will be added once they are assigned and published.
+In addition to the security-related changes, we also introduced minor
+fixes to some Restore Verification checkers.
+
+The security review was both a response to the reported issues and
+a preventive measure. Its purpose was not only to address the identified
+problems, but also to strengthen Bacularis through additional hardening
+and by standardizing secure data handling across different
+parts of the application.
+
+We hope you enjoy using Bacularis and encourage you to upgrade
+to version 6.5.2.
+
+Best regards,
+The Bacularis Team
 
 ### Main changes
 
 **Bacularis Web**
 
-- Fix stored XSS vulnerabilities in client- and tag-related views
-- Add additional security hardening and output escaping fixes
-- Fix tag validation and add value escaping
-- Escape client address in client details view
-- Fix selected path in verification rules if the search field was used to
-  find items
-- Table field escaping fixes
+* Apply security hardening after security review
+* Add additional verification rules checking
+* Improve import users validation
+* Improve validation in drive unload
+* Improve validation in pattern functions
 
 **Bacularis API**
 
-- Additional security hardening and output escaping fixes.
-- Use common render function in tables
-- Fix device path filter
+* Apply security hardening after security review
+* Improve storage release validation
 
 **Bacularis Common**
 
-- Add port validator to new host portlet
-- Add JSON value helper
-- Add helper for escaping special characters
-- Fix checker support for symbolic links
-- Move text renderer to common script
+* Apply security hardening after security review
+* Fix PHP warning in restore verification checksum checkers if item is directory
 
