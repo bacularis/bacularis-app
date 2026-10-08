@@ -83,6 +83,7 @@ The Bacularis Team
 * Fix align text and icon in table row details in responsive view
 * Fix checker name in verification rules
 * Fix displaying table buttons in responsive mode
+* Fix top bar element width
 
 **Bacularis Common**
 
@@ -96,6 +97,7 @@ The Bacularis Team
 * Add distiction between text and binary file types
 * Add generic mime types to file type module
 * New modules for restore verification result and status
+* Update SELinux policy module
 * Use common conf and sql types in file type list
 * Improve regular plugin command expression
 * Save current checker state if it is not empty
