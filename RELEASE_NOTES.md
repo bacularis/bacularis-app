@@ -1,121 +1,74 @@
 
 Hello Community,
 
-We are happy to bring you a new major release of Bacularis 7.0.0. Since
-the release of version 6.0.0, many new features and improvements have
-been added to the interface. We feel that now is the right time to bring
-them together under a new major version and mark another important milestone
-in the development of Bacularis.
+We are pleased to announce the release of Bacularis 7.1.0. In this release,
+we have focused primarily on developing two new plugins that extend
+Bacularis capabilities in data protection and backup security verification.
 
-Originally, we planned to release this version as 6.6.0. However, looking
-at the scope of changes introduced since 6.0.0 and the pace of development
-of the project, we decided that this was a good moment for the next major
-release.
+The first plugin provides backup and restore support for InfluxDB databases.
+The idea for this plugin came from a member of our community, and we are happy
+to make it available as a ready-to-use module. The new plugin extends Bacularis
+capabilities to include support for InfluxDB, a time-series database (TSDB).
+Its features include:
 
-One of the main additions in 7.0.0 is a new checker designed to detect
-signals that may indicate ransomware activity. It works as part of the Restore
-Verification system. Thanks to this integration, the analysis is not based
-solely on metadata or statistics. The checker examines actual data restored
-from backup during a restore test.
+* Backing up entire InfluxDB instances.
+* Backing up all or selected buckets.
+* Restoring data directly to an InfluxDB server or to a local directory.
+* Exporting bucket data in a portable format.
+* Additional backup and restore options.
 
-We spent a significant amount of time testing the checker and calibrating
-its measurements. It uses a multi-signal approach. Instead of relying on
-a single type of analysis, it combines several different signals that may
-indicate anomalies in the data. Detected anomalies are assigned weighted
-scores, and the combined score determines the final verification result.
+Detailed information about the InfluxDB plugin is available in the documentation:
 
-You can find all the details about this feature in the checker documentation:
+https://bacularis.app/doc/plugins/database/influxdb-2-backup-plugin.html
 
-https://bacularis.app/doc/restore-verification/checker-plugins/available-checkers/ransomware-detection.html
+The second new addition is the YARA Malware & Pattern Detection plugin. This
+new Restore Verification checker enables scanning backup data for malware and
+patterns defined in YARA rules.
 
-While developing the ransomware checker, we also introduced two mechanisms
-that may be useful for developers creating their own Restore Verification
-checkers in Bacularis. The first provides support for checker configurations,
-while the second makes it possible to maintain a history of previous checker
-results.
+The plugin supports two scanning engines: classic YARA and the newer YARA-X.
+Through its integration with Restore Verification, users can automatically scan
+backup data for potential threats and suspicious patterns. Users can also use
+existing YARA rule sets or create their own rules tailored to their specific
+environments.
 
-Both mechanisms are described in detail in the documentation, in the chapter
-about creating checkers. They are generic mechanisms and can also be used by
-other checkers. In the ransomware checker, they made it possible to compare
-historical results with current changes in backup data and determine whether
-observed deviations represent an anomaly or typical behavior for a given
-dataset.
+We hope this new plugin will help users enhance the security of the data stored
+in their Bacula backups.
 
-In addition to the new features, Bacularis 7.0.0 also includes a number
-of fixes.
+More information about the YARA Malware & Pattern Detection plugin is available
+in the documentation:
 
-If we look at 7.0.0 as the next major release after 6.0.0, the list of new
-capabilities has become quite extensive. Some of the most important changes
-introduced since 6.0.0 include:
+https://bacularis.app/doc/restore-verification/checker-plugins/available-checkers/yara-malware-and-pattern-detection.html
 
-- Restore Verification
-- Ransomware detection
-- Simple restore
-- AWS EC2 backup plugin
-- Global search
-- New look and feel
+In Bacularis 7.1.0, we have also fixed an issue affecting Bacularis deployment
+when using operating system profiles (OS profiles) created with older versions
+of Bacularis. The issue was reported by our community member mateus, who also
+provided the fix. Many thanks for this contribution!
 
-Bacularis 7.0.0 packages are available in all package repositories provided
-by Bacularis. Users of other installation methods, including Docker container
-images and PHP Composer, can also update their instances to the new version.
+We have also improved error reporting in Bacularis plugins and introduced several
+other minor fixes and improvements.
 
-We wish you smooth and successful upgrades. Thank you for every contribution,
-every piece of feedback, and every form of support for the project.
-We truly appreciate it.
-
-We hope Bacularis 7.0.0 serves you well.
+We hope the new features in Bacularis 7.1.0 will be useful in your backup
+environments. We wish you successful installations and upgrades.
 
 The Bacularis Team
 
 ### Main changes
 
-**Bacularis Web**
-
-* Add history support to restore verification checkers
-* Add config support to restore verification checkers
-* Add new web access action type
-* Add renderer to self test results
-* Improve displaying jobid in restore job table
-* Improve control chars checking
-* Display accurate message if restore finished with error before verification results
-* Fix job log box width if log contains very long output lines
-* Fix saving verification history structure
-* Fix align text and icon in table row details in responsive view
-* Fix checker name in verification rules
-* Fix displaying table buttons in responsive mode
-* Fix top bar element width
-
 **Bacularis Common**
 
-* Add ransomware detection plugin
-* Add historical data support to verification checkers
-* Add config support to verification checkers
-* Add new sorting and validation tool
-* Add file type module
-* Add data entropy module
-* Add finalize, history and configuration to verification checkers
-* Add distiction between text and binary file types
-* Add generic mime types to file type module
-* New modules for restore verification result and status
-* Update SELinux policy module
-* Use common conf and sql types in file type list
-* Improve regular plugin command expression
-* Save current checker state if it is not empty
-* In plugin list page list only plugins that support configuration
-* Truncate large logs
-* Extend message in job log if verifiaction could not be finalized
-* Extend generic error codes for not ready state
-* Get plugin settings by name
-* Fix restore verification for windows paths
-* Fix switch application to normal mode
-* Fix displaying table buttons in responsive mode
-* Fix checkbox state in plugin settings if default value is true
+* Add InfluxDB 2.x database backup plugin
+* Add malware and pattern detection checker plugin
+* Add shell error handler classes
+* Add plugin exception classes
+* Add method to execute program with literal arguments
+* Make checker configuration support independent on checker historical-data support
+* Prepare real path helper
+* Prepare execute process method
+* Register InfluxDB 2.x plugin in application
+* Use shell error handler for plugins
+* Refine character pattern for plugin configuration name
 
-**Bacularis API**
+**Bacularis Web**
 
-* Add restore verify result endpoint
-* Improve restore verification result messages
-* Improve control chars checking in bconsole module
-* Extend validation in restore verify plan endpoint
-* Fix displaying table buttons in responsive mode
+* Fix deploy API host using older custom OS profile
 
